@@ -140,6 +140,116 @@ class Fdb
         } else
             return false;
     }
-
-
+    /** Memorizza elementi sul database
+     * @access public
+     * @param $object
+     * @return bool
+     */
+    public function store($object) {
+        $i=0;
+        $values='';
+        $fields='';
+        debug($this->_table);
+        foreach ($object as $key=>$value) {
+            if (!($this->_auto_increment && $key == $this->_key) && substr($key, 0, 1)!='_') {
+                if ($i==0) {
+                    $fields.='`'.$key.'`';
+                    $values.='\''.$value.'\'';
+                } else {
+                    $fields.=', `'.$key.'`';
+                    $values.=', \''.$value.'\'';
+                }
+                $i++;
+            }
+        }
+        $query="INSERT INTO $this->_table ($fields) VALUES ($values)";
+        $this->_connection->exec($query);
+        $error = $this->_connection->errorInfo();
+        if ($error)
+            $return = false;
+        else
+            $return = true;
+        debug($query);
+        debug($error);
+        if ($this->_auto_increment) {
+            $result=$this->_connection->lastInsertId();
+            return $result;
+        } else {
+            return $return;
+        }
+    }
+    /** Estrae oggetti dal database
+     * @access public
+     * @param $key
+     * @return bool
+     */
+    public function load ($key) {
+        $query='SELECT * ' .
+            'FROM `'.$this->_table.'` ' .
+            'WHERE `'.$this->_key.'` = \''.$key.'\'';
+        $this->query($query);
+        return $this->getObject();
+    }
+    /** Elimina un elemento dal database
+     * @access public
+     * @param $object
+     * @return bool
+     */
+    public function delete(& $object) {
+        debug($object);
+        $arrayObject=$object->getObjectVars();
+        debug($arrayObject);
+        $query='DELETE ' .
+            'FROM `'.$this->_table.'` ' .
+            'WHERE `'.$this->_key.'` = \''.$arrayObject[$this->_key].'\'';
+        unset($object);
+        return $this->query($query);
+    }
+    /** Modifica elemento del database
+     * @access public
+     * @param $object
+     * @return bool
+     */
+    public function update($object) {
+        $i=0;
+        $fields='';
+        foreach ($object as $key=>$value) {
+            if (!($this->_auto_increment && $key == $this->_key) && substr($key, 0, 1)!='_') {
+                if ($i==0) {
+                    $fields.='`'.$key.'` = \''.$value.'\'';
+                } else {
+                    $fields.=', `'.$key.'` = \''.$value.'\'';
+                }
+                $i++;
+            }
+            debug($fields);
+        }
+        $query='UPDATE `'.$this->_table.'` SET '.$fields.' WHERE `'.$this->_key.'` = \''.$object["$this->_key"].'\'';
+        return $this->query($query);
+    }
+    /** Effettua una ricerca sul database //DA TESTARE
+     * @access public
+     * @param array $parametri
+     * @param string $ordinamento
+     * @param string $limit
+     * @return array
+     */
+    function search($parametri = array(), $ordinamento = '', $limit = '') {
+        $filtro='';
+        for ($i=0; $i<count($parametri); $i++) {
+            if ($i>0) $filtro .= ' AND';
+            $filtro .= ' `'.$parametri[$i][0].'` '.$parametri[$i][1].' \''.$parametri[$i][2].'\'';
+        }
+        $query='SELECT * ' .
+            'FROM `'.$this->_table.'` ';
+        if ($filtro != '')
+            $query.='WHERE '.$filtro.' ';
+        if ($ordinamento!='')
+            $query.='ORDER BY '.$ordinamento.' ';
+        if ($limit != '')
+            $query.='LIMIT '.$limit.' ';
+        $this->query($query);
+        return $this->getObjectArray();
+    }
 }
+?>

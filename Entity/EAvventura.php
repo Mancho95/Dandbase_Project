@@ -27,6 +27,10 @@ class EAvventura
      */
     public $map;
     /**
+     * @AttributeType int
+     */
+    public $nofplayers;
+    /**
      * @AssociationType Entity.EUtente
      * @AssociationMultiplicity 1
      */
