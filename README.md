@@ -1,7 +1,7 @@
 Dandbase_Project
 
 Gruppo di studio: 
-Francesco Mancini MAT240030, Francesco Barone MAT241171, Agostino Del Vecchio MAT231221.
+Francesco Mancini MAT240030
 
 Descrizione sintetica:
 L'applicazione DandBase ha l'obiettivo di fornire supporto ai giocatori di ruolo, fornendo uno spazio informativo online che consente di condividere il proprio materiale di gioco (avventure) in dettaglio la versione, la storia da seguire e le mappe di gioco con annesso sistema di votazione, gestione commenti e ricerca.

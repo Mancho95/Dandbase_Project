@@ -43,7 +43,7 @@ strong
 
 a
 {
-	color: #2980B9;
+	color: #b92828;
 }
 
 a:hover
@@ -270,14 +270,15 @@ ul.contact li a.icon-rss:before
 
 	#header-wrapper
 {
-	background: url(images/banner.jpg) no-repeat center;
+	background: #000000;
+	background: url(images/banner.jpg) no-repeat  center;
 	background-size: cover;
 }
 
 #header
 {
 	position: relative;
-	padding: 15em 0em;
+	padding: 13em 0em;
 }
 
 /*********************************************************************************/
@@ -294,7 +295,7 @@ ul.contact li a.icon-rss:before
 	top: 0;
 	left: 0;
 	padding: 1.5em 2em;
-	background: #3498DB;
+	background: #b92828;
 	border-radius: 0px 0px 5px 5px;
 }
 
@@ -319,7 +320,7 @@ ul.contact li a.icon-rss:before
 {
 	display: inline-block;
 	padding: 1em 0em;
-	background: #3498DB;
+	background: #b92828;
 	border-radius: 5px;
 }
 
@@ -420,6 +421,7 @@ ul.contact li a.icon-rss:before
 {
 	overflow: hidden;
 	padding: 5em 0em;
+	background-color: #b92828;
 }
 
 #copyright p
@@ -465,7 +467,7 @@ ul.contact li a.icon-rss:before
 
 #staff
 {
-	padding: 5em 0em;
+	padding: 0em 0em;
 }
 
 /*********************************************************************************/
