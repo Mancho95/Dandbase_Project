@@ -43,7 +43,7 @@ strong
 
 a
 {
-	color: #b92828;
+	color: #820907;
 }
 
 a:hover
@@ -295,7 +295,7 @@ ul.contact li a.icon-rss:before
 	top: 0;
 	left: 0;
 	padding: 1.5em 2em;
-	background: #b92828;
+	background: #820907/*#b92828*/;
 	border-radius: 0px 0px 5px 5px;
 }
 
@@ -320,7 +320,7 @@ ul.contact li a.icon-rss:before
 {
 	display: inline-block;
 	padding: 1em 0em;
-	background: #b92828;
+	background: #820907;
 	border-radius: 5px;
 }
 
@@ -421,7 +421,7 @@ ul.contact li a.icon-rss:before
 {
 	overflow: hidden;
 	padding: 5em 0em;
-	background-color: #b92828;
+	background-color: #820907;
 }
 
 #copyright p
