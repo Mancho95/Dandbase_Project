@@ -11,7 +11,7 @@
                 <input type="text" name="username" id="username" tabindex="1" class="field" value="" /></p>
             <p><label for="password" class="left">Password:</label><br />
                 <input type="password" name="password" id="password" tabindex="2" class="field" value="" /></p>
-            <p><input type="submit" class="button" value="LOGIN"  /></p>
+            <p><input type="submit" class="button" value="LOGIN"/></p>
         </fieldset></b>
         <span><font color="#690813" size="4.5"><b>Don't have an account?</b></font></span>
         <p><a href="?controller=registrazione&task=registra" class="button"> Sign Up</a></p>

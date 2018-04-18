@@ -1,5 +1,6 @@
 <div id="staff" class="container">
 		<div class="title">
+			<b><a color="#690813">{$avviso}</a></b>
 			<h2>Welcome to DnBase, a very helpful tool for Role-players!</h2>
 			<span><font color="#690813" size="4.5"><b>Share your adventures with a wide community of Role-players like you! A lot of epic stories await!</b></font></span>
 		<div class="boxA"><img src="images/pic01.jpg" width="300" height="450" alt="" /></div>

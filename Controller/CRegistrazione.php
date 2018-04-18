@@ -13,6 +13,10 @@ class CRegistrazione {
      */
     private $_errore='';
 
+    private $_avviso='';
+
+    public $_check=false;
+
     /**
      * Controlla se l'utente è registrato ed autenticato
      *
@@ -54,6 +58,7 @@ class CRegistrazione {
     public function autentica($username, $password) {
         $FUtente = new FUtente();
         $utente = $FUtente->load($username);
+        $view=USingleton::getInstance('VRegistrazione');
         if ($utente != false) {
             if ($username == $utente->getUsername() && $password == $utente->getPassword()) {
                 $session = USingleton::getInstance('USession');
@@ -62,7 +67,7 @@ class CRegistrazione {
                 $session->imposta_valore('timeout',time());
                 return true;
             }
-            else $this->_errore='Username o password errati'; //username password errati
+            else $this->_errore='Username o password errati';//username password errati
         }
         else $this->_errore='L\'account non esiste'; //account non esiste
 
@@ -213,6 +218,7 @@ class CRegistrazione {
         $session->cancella_valore('username');
         $session->cancella_valore('nome_cognome');
         $VRegistrazione = USingleton::getInstance('VRegistrazione');
+        $this->_check=false;
         $VRegistrazione->setLayout('logout');
         return $VRegistrazione->processaTemplate();
     }
@@ -221,18 +227,45 @@ class CRegistrazione {
      * Reindirizza alla home, o all'url dell'annuncio precedente il login
      */
     public function reindirizza() {
-        $view = new VRegistrazione();
+        $view = new VRegistrazione();;
         if ( $view->getAnnuncioOldURL() ){
             $view = new VRegistrazione();
             $oldAnnuncioID = $view->getAnnuncioOldURL();
             return CRicerca::dettagli($oldAnnuncioID);  // reindirizza all'annuncio visualizzato prima del login
         }
-        else {
-            $view->setLayout('default');
+        else if($this->getUtenteRegistrato()){
+            $this->_avviso='Logged in correctly!';
+            $view->impostaAvviso($this->_avviso);
+            $view->setLayout('loggato');
             return $view->processaTemplate(); // home
+        }
+        else if($this->getUtenteRegistrato()==false){
+            $this->_errore='User and password dont match!';
+            $view->impostaErrore($this->_errore);
+            $this->_errore='';
+            $view->setLayout('problemi');
+            $result=$view->processaTemplate();
+            $view->setLayout('moduloLogin');
+            $result.=$view->processaTemplate();
+            $view->impostaErrore('');
+            return $result;
         }
 
 
+
+    }
+
+    public function goHome(){
+        $view=new VRegistrazione();
+        if($this->getUtenteRegistrato()){
+            $view->impostaAvviso('');
+            $view->setLayout('loggato');
+            return $view->processaTemplate();
+        }
+        else {
+            $view->setLayout('default');
+            return $view->processaTemplate();
+        }
     }
 
     /**
@@ -266,8 +299,10 @@ class CRegistrazione {
                 return $this->creaUtente();
             case 'esci':
                 return $this->logout();
-            default:
+            case 'autentica':
                 return $this->reindirizza();
+            default:
+                return $this->goHome();
         }
     }
 

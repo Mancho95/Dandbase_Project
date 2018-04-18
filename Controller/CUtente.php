@@ -18,7 +18,7 @@ class CUtente {
         $view->impostaDati('password', $utente->getPassword());
         $view->impostaDati('nome', $utente->getNome());
         $view->impostaDati('cognome', $utente->getCognome());
-        $view->impostaDati('mail', $utente->getMail());
+        $view->impostaDati('mail', $utente->getEmail());
         return $view->processaTemplate();
     }
 
@@ -30,7 +30,7 @@ class CUtente {
                 $FUtente = new FUtente();
                 $utente = $FUtente->load($view->getUsername());
                 $FUtente->update(array($utente->getUsername, $modifiche['new'], $utente->getTipologiaUtente(), $utente->getNome(),
-                    $utente->getCognome(), $utente->getMail(), $utente->getStato()));
+                    $utente->getCognome(), $utente->getEmail(), $utente->getStato()));
             }
             else $this->_errore = 'Le password non coincidono';
         }
@@ -83,8 +83,6 @@ class CUtente {
     public function smista() {
         $view=USingleton::getInstance('VUtente');
         switch ($view->getTask()) {
-            case 'loggato':
-                return $this->mostra();
             case 'mostra':
                 return $this->mostra();
             case 'modifica_password':

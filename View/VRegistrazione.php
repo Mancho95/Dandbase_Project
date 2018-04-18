@@ -73,6 +73,14 @@ class VRegistrazione extends View {
         $this->assign('errore',$errore);
     }
 
+    public function impostaAvviso($avviso) {
+        $this->assign('avviso',$avviso);
+    }
+
+    public function impostaCheck($check) {
+        $this->assign('check',$check);
+    }
+
     /**
      * imposta il layout
      *
