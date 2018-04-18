@@ -1,4 +1,6 @@
-{* Smarty *}
+<?php /* Smarty version 2.6.31, created on 2018-04-06 12:12:19
+         compiled from index.tpl */ ?>
+<?php $pathPROVVISORIA = "/Dandbase_Project"; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
 Design by TEMPLATED
@@ -28,12 +30,13 @@ Released   : 20140131
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="." >D&Bases</a></h1>
+			<h1><a href="." >D&Bases <br><font size="2">Welcome back, <?php echo $this->_tpl_vars['name']; ?>
+!</font></br></a></h1>
 		</div>
 		<div id="menu">
 			<ul>
 				<li class="active"><a href="." accesskey="1" title="">Homepage</a></li>
-				<li color="red"><a href="#" accesskey="2" title="">Register</a></li>
+				<li color="red"><a href="?controller=registrazione&amp;task=registra" accesskey="2" title="">Register</a></li>
 				<li><a href="#" accesskey="3" title="">Login</a></li>
 				<li><a href="#" accesskey="4" title="">Search an adventure</a></li>
 				<li><a href="#" accesskey="5" title="">Contact Us</a></li>
@@ -45,7 +48,7 @@ Released   : 20140131
 	<div id="staff" class="container">
 		<div class="title">
 			<h2>Welcome to D&Bases, a very helpful tool for Role-players!</h2>
-			<span><font color="red" size="4.5"><b>Share your adventures with a wide community of Role-players like you! A lot of epic stories await!</b></font></span> </div>
+			<span><font color="red" size="4.5"><b>Share your adventures with a wide community of Role-players like you! A lot of epic stories await!</b></font></span>
 		<div class="boxA"><img src="images/pic01.jpg" width="300" height="450" alt="" /></div>
 		<div class="boxB"><img src="images/pic02.jpg" width="300" height="450" alt="" /></div>
 		<div class="boxC"><img src="images/pic03.jpg" width="300" height="450" alt="" /></div>
@@ -84,8 +87,7 @@ Released   : 20140131
 	</div>
 </div>
 <div id="copyright">
-	<p>&copy; Francesco Mancini. Programmazione Web Univaq 2016/17. All rights reserved. </p>
+	<p>&copy; Francesco Mancini. Programmazione Web Univaq 2016/17. All rights reserved.</p>
 </div>
 </body>
 </html>
-

@@ -9,11 +9,11 @@ class EUtente
     /**
      * @AttributeType string
      */
-    public $name;
+    public $nome;
     /**
      * @AttributeType string
      */
-    public $surname;
+    public $cognome;
     /**
      * @AttributeType string
      */
@@ -35,11 +35,11 @@ class EUtente
     /**
      * @AttributeType string
      */
-    public $activation_code;
+    public $cod_attivazione;
     /**
      * @AttributeType boolean
      */
-    public $activation=false;
+    public $stato_attivazione=false;
 
     /** Aggiunge un avventura all'utente
      * @access public
@@ -52,6 +52,26 @@ class EUtente
      * @access public
      * @return array()
      */
+    public function getUsername(){
+        return $this->username;
+    }
+
+    public function getPassword(){
+        return $this->password;
+    }
+
+    public function getNome(){
+        return $this->nome;
+    }
+
+    public function getCognome(){
+        return $this->cognome;
+    }
+
+    public function getEmail(){
+        return $this->email;
+    }
+
     public function getAdventure(){
         return $this->_adventures;
     }

@@ -1,11 +1,9 @@
 <?php
-
 /**
  * @access public
- * @package foundation
+ * @package Foundation
  */
-class FUtente extends Fdb
-{
+class FUtente extends Fdb{
     public function __construct() {
         $this->_table='utente';
         $this->_key='username';
@@ -13,4 +11,5 @@ class FUtente extends Fdb
         USingleton::getInstance('Fdb');
     }
 }
+
 ?>

@@ -1,138 +1,140 @@
 <?php
-
 /**
  * @access public
- * @package foundation
+ * @package Foundation
  */
-class Fdb
-{
+class Fdb {
     /**
-     * @var $_connection variabile di connessione al database
+     * @var $_connection Variabile di connessione al database
      */
     private $_connection;
     /**
-     * @var $_result contiene il risultato dell'ultima query
+     * @var $_result Variabile contenente il risultato dell'ultima query
      */
     private $_result;
     /**
-     * @var $_table contiene il nome  della tabella
+     * @var $_table Variabile contenente il nome della tabella
      */
     protected $_table;
     /**
-     * @var $_key contiene la primary key della tabella
+     * @var $_key Variabile contenente la chiave della tabella
      */
     protected $_key;
     /**
-     * @var $_return_class contiene il tipo della classe da restituire
+     * @var $_return_class Variabile contenente il tipo di classe da restituire
      */
     protected $_return_class;
     /**
-     * @var $_auto_increment variabile booleana settata a true se la tabella ha una chiave che si autoincrementa
+     * @var $_auto_increment Variabile booleana tabella con chiave automatica o no
      */
     protected $_auto_increment=false;
-    /** Costruttore classe Fdb
-     * @access public
+    /**
+     *
      * @global array $config
      */
     public function __construct() {
         global $config;
-        $this->connect( $config['db']['type'], $config['db']['host'], $config['db']['database'], $config['db']['user'], $config['db']['password']);
+        $this->connect($config['mysql']['host'], $config['mysql']['password'], $config['mysql']['user'], $config['mysql']['database']);
     }
-    /** Effettua la connessione al database
-     * @access public
+    /**
      * @param string $host
      * @param string $user
      * @param string $password
      * @param string $database
      * @return boolean
      */
-    public function connect($type,$host,$database,$user,$password) {
-        try {
-            $this->_connection = new PDO("$type:host=$host;dbname=$database;charset=utf8mb4", $user, $password);
-            $this->_connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo 'Connection error: ' . $e->getMessage();
+    public function connect($host,$user,$password,$database) {
+        $this->_connection=mysql_connect($host,$password,$user);
+        if (!$this->_connection) {
+            die('Impossibile connettersi al database: ' . mysql_error());
         }
-        debug('Connection to database successful');
+        $db_selected = mysql_select_db($database, $this->_connection);
+        if (!$db_selected) {
+            die ("Impossibile utilizzare $database: " . mysql_error());
+        }
+        debug('Connessione al database avvenuta correttamente');
+
         $this->query('SET names \'utf8\'');
         return true;
-    }
 
-    /** Passa una query al database
-     * @access public
+    }
+    /**
+     * Effettua una query al database
      * @param string $query
      * @return boolean
      */
     public function query($query) {
-        try {
-            $this->_result = $this->_connection->query($query);
-        } catch(PDOException $e) {
-            echo "Query error" . $e->getMessage();
-        }
+        $this->_result=mysql_query($query);
         debug($query);
-        $this->_error = $this->_connection->errorInfo();
-        debug($this->_error);
-        if ($this->_error)
+        debug(mysql_error());
+        if (!$this->_result)
             return false;
         else
             return true;
     }
-    /** Restituisce il risultato in un array associativo
-     * @access public
-     * @return array|boolean ritorna false solo se result è vuoto
+    /**
+     * Restituisce il risultato in un array associativo
+     *
+     * @return array
      */
     public function getResultAssoc() {
         if ($this->_result != false) {
-            $numero_righe=$this->_result->rowCount();
-            debug('Number of results:'. $numero_righe);
+            $numero_righe=mysql_num_rows($this->_result);
+            debug('Numero risultati:'. $numero_righe);
             if ($numero_righe>0) {
-                $return = $this->_result->fetchAll(PDO::FETCH_ASSOC);
+                $return=array();
+                while ($row = mysql_fetch_assoc($this->_result)) {
+                    $return[]=$row;
+                }
                 $this->_result=false;
                 return $return;
             }
         }
         return false;
     }
-    /** Restituisce il risultato in un array
-     * @access public
-     * @return array|boolean ritorna false solo se result è vuoto
+    /**
+     * Restituisce il risultato della query in un array
+     *
+     * @return array
      */
     public function getResult() {
         if ($this->_result!=false) {
-            $numero_righe=$this->_result->rowCount();
-            debug('Number of results:'. $numero_righe);
+            $numero_righe=mysql_num_rows($this->_result);
+            debug('Numero risultati:'. $numero_righe);
             if ($numero_righe>0) {
-                $row = $this->_result->fetch(PDO::FETCH_ASSOC);
+                $row = mysql_fetch_assoc($this->_result);
                 $this->_result=false;
                 return $row;
             }
         }
         return false;
     }
-    /**Restituisce un oggetto della classe Entity il cui tipo è contenuto in _return_class contentente i risultati della query
-     * @access public
+    /**
+     * Restituisce un oggetto della classe Entity impostata in _return_class contentente i risultati della query
+     *
      * @return mixed
      */
     public function getObject() {
-        $numero_righe=$this->_result->rowCount();
-        debug('Number of results:'. $numero_righe);
+        $numero_righe=mysql_num_rows($this->_result);
+        debug('Numero risultati:'. $numero_righe);
         if ($numero_righe>0) {
-            $row = $this->_result->fetchObject($this->_return_class);
+            $row = mysql_fetch_object($this->_result,$this->_return_class);
             $this->_result=false;
             return $row;
         } else
             return false;
     }
-    /**Restituisce un array di oggetti della classe Entity il cui tipo è contenuto in _return_class contentente i risultati della query
-     * @access public
-     * @return mixed
+    /**
+     * Restiuisce un array di oggetti contenenti il risultato della query
+     *
+     * @return array
      */
     public function getObjectArray() {
-        $numero_righe=$this->_result->rowCount();
-        debug('Number of results:'. $numero_righe);
+        $numero_righe=mysql_num_rows($this->_result);
+        debug('Numero risultati:'. $numero_righe);
         if ($numero_righe>0) {
             $return=array();
-            while ($row = $this->_result->fetchObject($this->_return_class)) {
+            while ($row = mysql_fetch_object($this->_result,$this->_return_class)) {
                 $return[]=$row;
             }
             $this->_result=false;
@@ -140,16 +142,23 @@ class Fdb
         } else
             return false;
     }
-    /** Memorizza elementi sul database
-     * @access public
-     * @param $object
-     * @return bool
+    /**
+     * Effettua la connessione al database
+     */
+    public function close() {
+        mysql_close($this->_connection);
+        debug('Connessione al db chiusa');
+    }
+    /**
+     * Memorizza sul database lo stato di un oggetto
+     *
+     * @param object $object
+     * @return boolean
      */
     public function store($object) {
         $i=0;
         $values='';
         $fields='';
-        debug($this->_table);
         foreach ($object as $key=>$value) {
             if (!($this->_auto_increment && $key == $this->_key) && substr($key, 0, 1)!='_') {
                 if ($i==0) {
@@ -162,59 +171,55 @@ class Fdb
                 $i++;
             }
         }
-        $query="INSERT INTO $this->_table ($fields) VALUES ($values)";
-        $this->_connection->exec($query);
-        $error = $this->_connection->errorInfo();
-        if ($error)
-            $return = false;
-        else
-            $return = true;
-        debug($query);
-        debug($error);
+        $query='INSERT INTO '.$this->_table.' ('.$fields.') VALUES ('.$values.')';
+        $return = $this->query($query);
         if ($this->_auto_increment) {
-            $result=$this->_connection->lastInsertId();
-            return $result;
+            $query='SELECT LAST_INSERT_ID() AS `id`';
+            $this->query($query);
+            $result=$this->getResult();
+            return $result['id'];
         } else {
             return $return;
         }
     }
-    /** Estrae oggetti dal database
-     * @access public
-     * @param $key
-     * @return bool
+    /**
+     * Carica in un oggetto lo stato dal database
+     *
+     * @param mixed $key
+     * @return boolean
      */
-    public function load ($key) {
+    public function load($key) {
         $query='SELECT * ' .
-            'FROM `'.$this->_table.'` ' .
-            'WHERE `'.$this->_key.'` = \''.$key.'\'';
+                'FROM `'.$this->_table.'` ' .
+                'WHERE `'.$this->_key.'` = \''.$key.'\'';
         $this->query($query);
         return $this->getObject();
     }
-    /** Elimina un elemento dal database
-     * @access public
-     * @param $object
-     * @return bool
+    /**
+     * Cancella dal database lo stato di un oggetto
+     *
+     * @param object $object
+     * @return boolean
      */
     public function delete(& $object) {
-        debug($object);
-        $arrayObject=$object->getObjectVars();
-        debug($arrayObject);
+        $arrayObject=get_object_vars($object);
         $query='DELETE ' .
-            'FROM `'.$this->_table.'` ' .
-            'WHERE `'.$this->_key.'` = \''.$arrayObject[$this->_key].'\'';
+                'FROM `'.$this->_table.'` ' .
+                'WHERE `'.$this->_key.'` = \''.$arrayObject[$this->_key].'\'';
         unset($object);
         return $this->query($query);
     }
-    /** Modifica elemento del database
-     * @access public
-     * @param $object
-     * @return bool
+    /**
+     * Aggiorna sul database lo stato di un oggetto
+     *
+     * @param object $object
+     * @return boolean
      */
     public function update($object) {
         $i=0;
         $fields='';
         foreach ($object as $key=>$value) {
-            if (!($this->_auto_increment && $key == $this->_key) && substr($key, 0, 1)!='_') {
+            if (!($key == $this->_key) && substr($key, 0, 1)!='_') {
                 if ($i==0) {
                     $fields.='`'.$key.'` = \''.$value.'\'';
                 } else {
@@ -222,13 +227,14 @@ class Fdb
                 }
                 $i++;
             }
-            debug($fields);
         }
-        $query='UPDATE `'.$this->_table.'` SET '.$fields.' WHERE `'.$this->_key.'` = \''.$object["$this->_key"].'\'';
+        $arrayObject=get_object_vars($object);
+        $query='UPDATE `'.$this->_table.'` SET '.$fields.' WHERE `'.$this->_key.'` = \''.$arrayObject[$this->_key].'\'';
         return $this->query($query);
     }
-    /** Effettua una ricerca sul database //DA TESTARE
-     * @access public
+    /**
+     * Effettua una ricerca sul database
+     *
      * @param array $parametri
      * @param string $ordinamento
      * @param string $limit
@@ -241,7 +247,7 @@ class Fdb
             $filtro .= ' `'.$parametri[$i][0].'` '.$parametri[$i][1].' \''.$parametri[$i][2].'\'';
         }
         $query='SELECT * ' .
-            'FROM `'.$this->_table.'` ';
+                'FROM `'.$this->_table.'` ';
         if ($filtro != '')
             $query.='WHERE '.$filtro.' ';
         if ($ordinamento!='')
@@ -252,4 +258,5 @@ class Fdb
         return $this->getObjectArray();
     }
 }
+
 ?>
