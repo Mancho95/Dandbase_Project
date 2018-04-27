@@ -141,7 +141,7 @@ class VHome extends View {
     }
 
     public function aggiungiTastoUpload() {
-        $tasto_mieiannunci = array('testo' => 'Upload adventure', 'link' => '#');
+        $tasto_mieiannunci = array('testo' => 'Upload adventure', 'link' => '?controller=upload&task=modulo');
         $this->_top_button[] = $tasto_mieiannunci;
 
     }

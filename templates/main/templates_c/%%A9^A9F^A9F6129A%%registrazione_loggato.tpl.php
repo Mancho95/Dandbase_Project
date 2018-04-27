@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-04-18 16:58:27
+<?php /* Smarty version 2.6.26, created on 2018-04-27 18:47:35
          compiled from registrazione_loggato.tpl */ ?>
 <div id="staff" class="container">
     <div class="title">
@@ -16,8 +16,8 @@
                 <span></span></h2>
             <p>Share your fantastic adventures, let other players test it and wait for their feedback.</p>
             <ul class="style4">
-                <li class="first"><a href="#">Upload an adventure</a></li>
-                <li><a href="#">Go to "Your adventures"</a></li>
+                <li class="first"><a href="?controller=upload&amp;task=modulo">Upload an adventure</a></li>
+                <li><a href="?controller=profile&task=mostra">Go to "Your adventures"</a></li>
             </ul>
         </div>
         <div class="boxB">

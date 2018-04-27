@@ -7,44 +7,32 @@
 class EAvventura
 {
     /**
-     * @AttributeType int
-     */
-    public $id;
-    /**
-     * @AttributeType string
-     */
-    public $name;
-    /**
-     * @AttributeType string
-     */
-    public $data;
-    /**
-     * @AttributeType string
-     */
-    public $description;
-    /**
-     * @AttributeType resource
-     */
-    public $map;
-    /**
-     * @AttributeType int
-     */
-    public $nofplayers;
-    /**
      * @AssociationType Entity.EUtente
      * @AssociationMultiplicity 1
      */
-    public $_user;
+    public $username;
+    /**
+     * @AttributeType string
+     */
+    public $nome;
+    /**
+     * @AttributeType string
+     */
+    public $descrizione;
+    /**
+     * @AttributeType string
+     */
+    public $versione;
+    /**
+     * @AttributeType string
+     */
+    public $file;
     /**
      * @AssociationType Entity.ECommento
      * @AssociationMultiplicity 0..*
      * @AssociationKind aggregation
      */
     public $_comments=array();
-    /**
-     * @AttributeType boolean
-     */
-    public $approved=false;
 
     /** Set dell'utente che ha creato l'avventura
      * @access public

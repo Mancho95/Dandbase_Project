@@ -13,8 +13,8 @@
                 <span></span></h2>
             <p>Share your fantastic adventures, let other players test it and wait for their feedback.</p>
             <ul class="style4">
-                <li class="first"><a href="#">Upload an adventure</a></li>
-                <li><a href="#">Go to "Your adventures"</a></li>
+                <li class="first"><a href="?controller=upload&amp;task=modulo">Upload an adventure</a></li>
+                <li><a href="?controller=profile&task=mostra">Go to "Your adventures"</a></li>
             </ul>
         </div>
         <div class="boxB">

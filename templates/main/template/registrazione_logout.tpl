@@ -13,8 +13,8 @@
                 <span></span></h2>
             <p>Share your fantastic adventures, let other players test it and wait for their feedback.</p>
             <ul class="style4">
-                <li class="first"><a href="#">Upload an adventure</a></li>
-                <li><a href="#">Go to "Your adventures"</a></li>
+                <li class="first"><a href="?controller=registrazione&amp;task=registra">Upload an adventure</a></li>
+                <li><a href="?controller=registrazione&amp;task=registra">Go to "Your adventures"</a></li>
                 <li><a href="?controller=registrazione&amp;task=registra">Not yet registered? Click here to sign up!</a></li>
             </ul>
         </div>

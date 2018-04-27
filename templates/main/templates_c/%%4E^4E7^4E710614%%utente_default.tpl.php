@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-04-18 17:41:44
+<?php /* Smarty version 2.6.26, created on 2018-04-23 11:25:41
          compiled from utente_default.tpl */ ?>
 <div id="staff" class="container">
     <div class="title">
@@ -14,7 +14,7 @@
             <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change password &nbsp</a></p>
         </fieldset></b>
         <b><fieldset class="bordo"><legend>&nbsp;Your adventures</legend>
-                
+
         </fieldset></b>
     </div>
 </div>

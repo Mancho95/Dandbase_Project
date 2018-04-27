@@ -9,7 +9,7 @@
             <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change password &nbsp</a></p>
         </fieldset></b>
         <b><fieldset class="bordo"><legend>&nbsp;Your adventures</legend>
-                
+
         </fieldset></b>
     </div>
 </div>

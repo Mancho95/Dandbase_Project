@@ -43,6 +43,9 @@ class CHome {
             case 'registrazione':
                 $CRegistrazione = USingleton::getInstance('CRegistrazione');
                 return $CRegistrazione->smista();
+            case 'upload':
+                $CUpload = USingleton::getInstance('CUpload');
+                return $CUpload->smista();
             default:
                 $CRegistrazione = USingleton::getInstance('CRegistrazione');
                 return $CRegistrazione->smista();
