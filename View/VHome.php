@@ -129,7 +129,7 @@ class VHome extends View {
     }
 
     public function aggiungiTastoSearch() {
-        $tasto_boxmail = array('testo' => 'Search adventure', 'link' => '#');
+        $tasto_boxmail = array('testo' => 'Search adventure', 'link' => '?controller=ricerca&task=modulo');
         $this->_top_button[] = $tasto_boxmail;
 
     }

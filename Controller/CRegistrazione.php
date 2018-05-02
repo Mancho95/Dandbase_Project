@@ -96,7 +96,6 @@ class CRegistrazione {
                 }
                 //$utente->generaCodiceAttivazione();
                 //var_dump($utente);
-                var_dump($FUtente);
                 $FUtente->store($utente);
                 //$this->emailAttivazione($utente);
                 $registrato=true;

@@ -22,7 +22,7 @@
                 <span></span></h2>
             <p>Play other players adventures, and rate them without harrassing the creator.</p>
             <ul class="style4">
-                <li class="first"><a href="#">Search for an adventure</a></li>
+                <li class="first"><a href="?controller=ricerca&amp;task=modulo">Search for an adventure</a></li>
                 <li><a href="#">Random adventure, if you are brave enough</a></li>
             </ul>
         </div>

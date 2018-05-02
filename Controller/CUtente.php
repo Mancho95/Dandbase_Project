@@ -12,13 +12,17 @@ class CUtente {
     public function mostra() {
         $view = USingleton::getInstance('VUtente');
         $FUtente = new FUtente();
+        $FAvventura = new FAvventura();
         $utente = $FUtente->load($view->getUsername());
+        $nomeutente=$view->getUsername();
         $view->setLayout('default');
         $view->impostaDati('username', $utente->getUsername());
         $view->impostaDati('password', $utente->getPassword());
         $view->impostaDati('nome', $utente->getNome());
         $view->impostaDati('cognome', $utente->getCognome());
         $view->impostaDati('mail', $utente->getEmail());
+        $avventura=$FAvventura->loadAvventure($nomeutente);
+        $view->impostaAvventure($avventura);
         return $view->processaTemplate();
     }
 

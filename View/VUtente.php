@@ -13,6 +13,12 @@ class VUtente extends View {
     private $_layout='default';
 
     /**
+     * @var array $_adventures_list
+     */
+    private $_adventures_list=array();
+
+
+    /**
      * restituisce la password passata tramite GET o POST
      *
      * @return mixed
@@ -97,6 +103,14 @@ class VUtente extends View {
      */
     public function impostaDati($key,$valore) {
         $this->assign($key,$valore);
+    }
+
+    public function impostaAvventure($value){
+        $this->_adventures_list=$value;
+        $this->assign('_adventures_list',$this->_adventures_list);
+        //$prova=implode(",",$this->_adventures_list);
+        //foreach ($this->_adventures_list as $lista)
+          //  echo($lista[i]);
     }
 
     /**

@@ -32,14 +32,6 @@ class EUtente
      * @AssociationKind Aggregation
      */
     public $_adventures=array();
-    /**
-     * @AttributeType string
-     */
-    public $cod_attivazione;
-    /**
-     * @AttributeType boolean
-     */
-    public $stato_attivazione=false;
 
     /** Aggiunge un avventura all'utente
      * @access public

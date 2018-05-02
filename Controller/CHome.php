@@ -37,6 +37,9 @@ class CHome {
     public function smista() {
         $view = USingleton::getInstance('VHome');
         switch ($view->getController()) {
+            case 'ricerca':
+                $CRicerca= USingleton::getInstance('CRicerca');
+                return $CRicerca->smista();
             case 'profile':
                 $CUtente= USingleton::getInstance('CUtente');
                 return $CUtente->smista();
