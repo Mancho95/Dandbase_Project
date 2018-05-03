@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Ott 30, 2017 alle 10:48
+-- Creato il: Mag 03, 2018 alle 17:08
 -- Versione del server: 10.1.21-MariaDB
 -- Versione PHP: 5.6.30
 
@@ -32,14 +32,19 @@ CREATE TABLE `avventura` (
   `cod_avventura` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `nome` varchar(20) NOT NULL,
-  `versione` varchar(10) NOT NULL,
-  `numero_di_giocatori` int(11) NOT NULL,
-  `data_pubblicazione` date NOT NULL,
-  `ambientazione` varchar(20) NOT NULL,
   `descrizione` text NOT NULL,
-  `mappa` text NOT NULL,
-  `approvazione` tinyint(1) NOT NULL DEFAULT '0'
+  `versione` varchar(10) NOT NULL,
+  `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `avventura`
+--
+
+INSERT INTO `avventura` (`cod_avventura`, `username`, `nome`, `descrizione`, `versione`, `file`) VALUES
+(8, 'admin', 'eeeer', 'reeeeeeeeeeeeeee', 'Pathfinder', 'Resource id #14'),
+(9, 'admin', 'rererere', 'dadsacs', '3', 'Resource id #14'),
+(10, 'mancho', 'Prova avventura', 'Questa avventura parla di un tempio  maledetto, ambientato nel medioevo', 'Pathfinder', 'Resource id #14');
 
 -- --------------------------------------------------------
 
@@ -66,17 +71,19 @@ CREATE TABLE `utente` (
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `cod_attivazione` varchar(20) NOT NULL,
-  `stato_attivazione` tinyint(1) NOT NULL DEFAULT '0'
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabella contenente info sugli user';
 
 --
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`username`, `nome`, `cognome`, `password`, `email`, `cod_attivazione`, `stato_attivazione`) VALUES
-('admin', 'Paperino', 'Disney', 'pippo', '', '', 1);
+INSERT INTO `utente` (`username`, `nome`, `cognome`, `password`, `email`) VALUES
+('admin', 'Paperino', 'Disney', 'pippo', ''),
+('asdsada', 'dsdasads', 'dsaads', 'da', 'dsadas'),
+('ciro', 'ciro', 'ciro', 'ciro', 'ciro'),
+('lezzo', 'lezzo', 'lezzo', 'lezzo', 'lezzo'),
+('mancho', 'francesco', 'mancini', 'vapor', 'ff');
 
 --
 -- Indici per le tabelle scaricate
@@ -108,7 +115,7 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `avventura`
 --
 ALTER TABLE `avventura`
-  MODIFY `cod_avventura` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_avventura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT per la tabella `commento`
 --

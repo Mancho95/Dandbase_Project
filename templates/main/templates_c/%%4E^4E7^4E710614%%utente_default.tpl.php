@@ -1,5 +1,6 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-02 19:21:31
+<?php /* Smarty version 2.6.26, created on 2018-05-03 19:13:50
          compiled from utente_default.tpl */ ?>
+<form method="post" action="index.php">
 <div id="staff" class="container">
     <div class="title">
     <?php echo $this->_tpl_vars['errore']; ?>
@@ -13,6 +14,8 @@
             <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=upload&task=modulo" class="button"> Upload Adventure</a></p>
             <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change password &nbsp</a></p>
         </fieldset></b>
+        <p><input type="hidden" name="controller" value="ricerca" /></p>
+        <p><input type="hidden" name="task" value="mostra" /></p>
         <b><fieldset class="bordo"><legend>&nbsp;Your adventures</legend>
                 <p class="unicaRiga">
                 <span class="margine_d"><font size="6.5" color="#690813">Link</font></span>
@@ -44,12 +47,14 @@ $this->_sections['i']['first']      = ($this->_sections['i']['iteration'] == 1);
 $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $this->_sections['i']['total']);
 ?>
                         <p class="unicaRiga">
-                            <span class="margine_d"><font size="4.5" color="black">Link</font></span>
+                            <span class="margine_d"><button type="submit" name="cod_avventura" value="<?php echo $this->_tpl_vars['_adventures_list'][$this->_sections['i']['index']]->cod_avventura; ?>
+" class="button">Open</button></span>
                             <span class="margine_d2"><font size="4.5" color="black"><?php echo $this->_tpl_vars['_adventures_list'][$this->_sections['i']['index']]->versione; ?>
 </font></span>
                             <span class="centrato"><font size="4.5" color="black"><?php echo $this->_tpl_vars['_adventures_list'][$this->_sections['i']['index']]->nome; ?>
 </font></span>
                         </p>
+            </br>
                     <?php endfor; endif; ?>
         </fieldset></b>
     </div>

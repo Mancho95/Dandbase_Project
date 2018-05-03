@@ -144,11 +144,33 @@ class CRicerca {
         }
     }
 
-    public function search(){
-        $view=new VRicerca();
+    public function modulo(){
+        $view=USingleton::getInstance('VRicerca');
         $view->setLayout('default');
         return $view->processaTemplate();
         }
+
+    public function search(){
+        $view=USingleton::getInstance('VRicerca');
+        $view->setLayout('risultati');
+        $param=$view->getDatiRicerca();
+        $FAvventura = new FAvventura();
+        $avventura=$FAvventura->loadRicerche($param);
+        $view->impostaAvventure($avventura);
+        return $view->processaTemplate();
+    }
+
+    public function show(){
+        $view=USingleton::getInstance('VRicerca');
+        $view->setLayout('mostra');
+        $param=$view->getDatiMostra();
+        $FAvventura = new FAvventura();
+        $avventura=$FAvventura->loadMostra($param);
+        $view->impostaAvventure($avventura);
+        return $view->processaTemplate();
+    }
+
+
 
     /**
      * Smista le richieste ai vari metodi
@@ -159,7 +181,11 @@ class CRicerca {
         $view=USingleton::getInstance('VRicerca');
         switch ($view->getTask()) {
             case 'modulo':
+                return $this->modulo();
+            case 'ricerca':
                 return $this->search();
+            case 'mostra':
+                return $this->show();
             case 'dettagli':
                 return $this->dettagli();
             case 'cerca':

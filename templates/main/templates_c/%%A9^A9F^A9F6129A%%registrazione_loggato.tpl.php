@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-04-27 18:47:35
+<?php /* Smarty version 2.6.26, created on 2018-05-02 19:52:58
          compiled from registrazione_loggato.tpl */ ?>
 <div id="staff" class="container">
     <div class="title">
@@ -25,7 +25,7 @@
                 <span></span></h2>
             <p>Play other players adventures, and rate them without harrassing the creator.</p>
             <ul class="style4">
-                <li class="first"><a href="#">Search for an adventure</a></li>
+                <li class="first"><a href="?controller=ricerca&amp;task=modulo">Search for an adventure</a></li>
                 <li><a href="#">Random adventure, if you are brave enough</a></li>
             </ul>
         </div>

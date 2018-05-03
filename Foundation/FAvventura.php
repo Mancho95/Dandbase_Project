@@ -13,12 +13,27 @@ class FAvventura extends Fdb
         $this->_auto_increment=true;
         USingleton::getInstance('Fdb');
     }
+    public function loadRicerche($param){
+        $parametri=array();
+        $parametri[]=array('nome','=',$param['nome'],'versione','=',$param['versione']);
+        $arrayCommenti=parent::search($parametri);
+        return $arrayCommenti;
+    }
+
     public function loadAvventure($username){
         $parametri=array();
         $parametri[]=array('username','=',$username);
         $arrayCommenti=parent::search($parametri);
         return $arrayCommenti;
     }
+
+    public function loadMostra($cod_avventura){
+        $parametri=array();
+        $parametri[]=array('cod_avventura','=',$cod_avventura);
+        $arrayCommenti=parent::search($parametri);
+        return $arrayCommenti;
+    }
+
     public function store($object) {
         $i=0;
         $values='';

@@ -236,4 +236,29 @@ class VRicerca extends View {
             return false;
     }
 
+    public function getDatiRicerca() {
+        $dati_richiesti=array('nome','versione');
+        $dati=array();
+        foreach ($dati_richiesti as $dato) {
+            if (isset($_REQUEST[$dato]))
+                $dati[$dato]=$_REQUEST[$dato];
+        }
+        return $dati;
+    }
+
+    public function getDatiMostra() {
+        if (isset($_REQUEST['cod_avventura']))
+            return $_REQUEST['cod_avventura'];
+        else
+            return false;
+    }
+
+    public function impostaAvventure($value){
+        $this->_adventures_list=$value;
+        $this->assign('_adventures_list',$this->_adventures_list);
+        //$prova=implode(",",$this->_adventures_list);
+        //foreach ($this->_adventures_list as $lista)
+        //  echo($lista[i]);
+    }
+
 }

@@ -236,6 +236,26 @@ class Fdb {
      * Effettua una ricerca sul database
      *
      * @param array $parametri
+     * @return array
+     */
+    /*function search($parametri = array()) {
+        $filtro='';
+        for ($i=0; $i<count($parametri); $i++) {
+            if ($i>0)
+            $filtro .= 'nome='.'\''.$parametri['nome'].'\''.' AND '.'versione='.'\''.$parametri['versione'].'\'';
+        }
+        $query='SELECT * ' .
+                'FROM '.$this->_table;
+        if ($filtro != '')
+            $query.=' WHERE '.$filtro.' ';
+        var_dump($query);
+        $this->query($query);
+        return $this->getObjectArray();
+    }*/
+
+    /** Effettua una ricerca sul database //DA TESTARE
+     * @access public
+     * @param array $parametri
      * @param string $ordinamento
      * @param string $limit
      * @return array
@@ -247,7 +267,7 @@ class Fdb {
             $filtro .= ' `'.$parametri[$i][0].'` '.$parametri[$i][1].' \''.$parametri[$i][2].'\'';
         }
         $query='SELECT * ' .
-                'FROM `'.$this->_table.'` ';
+            'FROM `'.$this->_table.'` ';
         if ($filtro != '')
             $query.='WHERE '.$filtro.' ';
         if ($ordinamento!='')

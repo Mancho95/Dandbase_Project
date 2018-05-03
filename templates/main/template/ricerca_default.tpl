@@ -1,7 +1,7 @@
 <div id="staff" class="container">
     <div class="title">
         <span><font color="#690813" size="4.5"><b>Enter your searching parameters</b></font></span>
-        <form method="post" action="index.php">
+        <form method="post" action="index.php" id="form">
             <b><fieldset class="bordo">
                     <p><label for="name" class="left">Adventure Name:</label>
                         <input type="text" name="nome" id="nome" class="field" value="" tabindex="2" /></p>
