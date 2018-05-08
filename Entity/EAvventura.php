@@ -24,10 +24,6 @@ class EAvventura
      */
     public $versione;
     /**
-     * @AttributeType string
-     */
-    public $file;
-    /**
      * @AssociationType Entity.ECommento
      * @AssociationMultiplicity 0..*
      * @AssociationKind aggregation

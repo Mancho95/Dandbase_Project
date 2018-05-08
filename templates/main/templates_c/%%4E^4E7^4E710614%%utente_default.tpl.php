@@ -1,19 +1,21 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-03 19:13:50
+<?php /* Smarty version 2.6.26, created on 2018-05-08 21:53:36
          compiled from utente_default.tpl */ ?>
 <form method="post" action="index.php">
 <div id="staff" class="container">
     <div class="title">
-    <?php echo $this->_tpl_vars['errore']; ?>
-
+        <b><a color="#690813"><?php echo $this->_tpl_vars['errore']; ?>
+</a></b>
         <b><fieldset class="bordo"><legend>&nbsp;Your Profile</legend>
-            <p style="float: left;"><img src="images/bulba.jpg" width="250" height="250" alt="" /></p>
+            <p style="float: left;"><img src="profileimages/<?php echo $this->_tpl_vars['username']; ?>
+" width="250" height="250" alt="" /></p>
             <p><font size="6.5" color="#690813">&nbsp <?php echo $this->_tpl_vars['username']; ?>
 </font></p>
-            <p><font size="2.5" color="black">&nbsp Your e-mail:<?php echo $this->_tpl_vars['mail']; ?>
+            <p><font size="2.5" color="black">&nbsp&nbsp&nbsp&nbsp Your e-mail: <?php echo $this->_tpl_vars['mail']; ?>
 </font></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=upload&task=modulo" class="button"> Upload Adventure</a></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change password &nbsp</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changeimg" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=upload&task=modulo" class="button"> Upload Adventure</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changeem" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changepw" class="button"> Change password &nbsp</a></p>
         </fieldset></b>
+        <?php if ($this->_tpl_vars['_adventures_list'] != 0): ?>
         <p><input type="hidden" name="controller" value="ricerca" /></p>
         <p><input type="hidden" name="task" value="mostra" /></p>
         <b><fieldset class="bordo"><legend>&nbsp;Your adventures</legend>
@@ -56,6 +58,7 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
                         </p>
             </br>
                     <?php endfor; endif; ?>
+                <?php endif; ?>
         </fieldset></b>
     </div>
 </div>

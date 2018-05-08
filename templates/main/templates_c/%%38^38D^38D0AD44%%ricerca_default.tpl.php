@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-03 13:13:42
+<?php /* Smarty version 2.6.26, created on 2018-05-04 13:02:42
          compiled from ricerca_default.tpl */ ?>
 <div id="staff" class="container">
     <div class="title">
-        <span><font color="#690813" size="4.5"><b>Enter your searching parameters</b></font></span>
+        <span><b><h2>Enter your searching parameters</h2></b></span>
         <form method="post" action="index.php" id="form">
             <b><fieldset class="bordo">
                     <p><label for="name" class="left">Adventure Name:</label>

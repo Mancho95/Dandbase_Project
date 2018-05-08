@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-02 19:49:21
+<?php /* Smarty version 2.6.26, created on 2018-05-08 17:58:28
          compiled from registrazione_default.tpl */ ?>
 <div id="staff" class="container">
 		<div class="title">
@@ -18,7 +18,9 @@
 			<ul class="style4">
 				<li class="first"><a href="?controller=registrazione&amp;task=registra">Upload an adventure</a></li>
 				<li><a href="?controller=registrazione&amp;task=registra">Go to "Your adventures"</a></li>
+                <?php if ($this->_tpl_vars['loggato'] == false): ?>
 				<li><a href="?controller=registrazione&amp;task=registra">Not yet registered? Click here to sign up!</a></li>
+                <?php endif; ?>
 			</ul>
 		</div>
 		<div class="boxB">
@@ -27,8 +29,10 @@
 			<p>Play other players adventures, and rate them without harrassing the creator.</p>
 			<ul class="style4">
 				<li class="first"><a href="?controller=ricerca&amp;task=modulo">Search for an adventure</a></li>
-				<li><a href="#">Random adventure, if you are brave enough</a></li>
+				<li><a href="?controller=ricerca&amp;task=random">Random adventure, if you are brave enough</a></li>
+                <?php if ($this->_tpl_vars['loggato'] == false): ?>
 				<li><a href="?controller=registrazione&amp;task=registra">Dont forget to sign up!</a></li>
+                <?php endif; ?>
 			</ul>
 		</div>
 		<div class="boxC">
@@ -38,7 +42,9 @@
 			<ul class="style4">
 				<li class="first"><a href="?controller=registrazione&amp;task=contatta">Contact us</a></li>
 				<li><a href="?controller=registrazione&amp;task=faq">FAQs</a></li>
+				<?php if ($this->_tpl_vars['loggato'] == false): ?>
 				<li><a href="?controller=registrazione&amp;task=registra">...Really? Don't have an account yet?</a></li>
+                <?php endif; ?>
 			</ul>
 		</div>
 	</div>

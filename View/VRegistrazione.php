@@ -77,6 +77,10 @@ class VRegistrazione extends View {
         $this->assign('avviso',$avviso);
     }
 
+    public function impostaLoggato($loggato){
+        $this->assign('loggato',$loggato);
+    }
+
 
     /**
      * imposta il layout

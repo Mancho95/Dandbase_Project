@@ -19,5 +19,12 @@ class FCommento extends Fdb
         $arrayCommenti=parent::search($parametri);
         return $arrayCommenti;
     }
+
+    public function loadCommento($cod_commento){
+        $parametri=array();
+        $parametri[]=array('cod_commento','=',$cod_commento);
+        $arrayCommenti=parent::search($parametri);
+        return $arrayCommenti;
+    }
 }
 ?>

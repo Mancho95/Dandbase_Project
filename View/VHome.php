@@ -158,6 +158,8 @@ class VHome extends View {
 
     }
 
+
+
     /**
      * imposta i tasti per le categorie nel menu principale
      */

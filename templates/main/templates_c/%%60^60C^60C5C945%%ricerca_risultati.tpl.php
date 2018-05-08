@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-03 19:02:00
+<?php /* Smarty version 2.6.26, created on 2018-05-04 19:26:11
          compiled from ricerca_risultati.tpl */ ?>
 <form method="post" action="index.php">
 <div id="staff" class="container">
@@ -44,6 +44,7 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
                         <span class="centrato"><font size="4.5" color="black"><?php echo $this->_tpl_vars['_adventures_list'][$this->_sections['i']['index']]->nome; ?>
 </font></span>
                     </p>
+            </br>
                 <?php endfor; endif; ?>
                 <?php endif; ?>
                 <?php if ($this->_tpl_vars['_adventures_list'] == 0): ?>

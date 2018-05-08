@@ -7,6 +7,9 @@
  */
 
 class CHome {
+
+    private $_errore='';
+
     /**
      * Imposta la pagina, controlla l'autenticazione
      */
@@ -29,6 +32,17 @@ class CHome {
         }
         $VHome->mostraPagina();
     }
+
+    public function geterrore($errore){
+        $CUtente=USingleton::getInstance('CUtente');
+        $CUtente->setErrore($errore);
+    }
+
+    public function geterrore2($errore){
+        $CUpload=USingleton::getInstance('CUpload');
+        $CUpload->setErrore($errore);
+    }
+
     /**
      * Smista le richieste ai vari controller
      *

@@ -42,6 +42,14 @@ class VRicerca extends View {
         $this->assign('errore',$errore);
     }
 
+    public function impostaCommentato(){
+        $this->assign('commentato',true);
+    }
+
+    public function impostaUsername($user){
+        $this->assign('user',$user);
+    }
+
     /**
      * Imposta i dati nel template identificati da una chiave ed il relativo valore
      *
@@ -253,12 +261,36 @@ class VRicerca extends View {
             return false;
     }
 
-    public function impostaAvventure($value){
-        $this->_adventures_list=$value;
-        $this->assign('_adventures_list',$this->_adventures_list);
-        //$prova=implode(",",$this->_adventures_list);
-        //foreach ($this->_adventures_list as $lista)
-        //  echo($lista[i]);
+    public function getDatiCommento() {
+        $dati_richiesti=array('cod_avventura','username','testo','upvote');
+        $dati=array();
+        foreach ($dati_richiesti as $dato) {
+            if (isset($_REQUEST[$dato]))
+                $dati[$dato]=$_REQUEST[$dato];
+        }
+        return $dati;
     }
+
+    public function impostaAvventure($value){
+        $this->assign('_adventures_list',$value);
+    }
+
+    public function impostaCommenti($value){
+        $this->assign('_comments_list',$value);
+    }
+
+    public function impostaImage($value){
+        $this->assign('image',$value);
+    }
+
+    public function impostaUpvote($value){
+        if($value==true)
+        $this->assign('_upvote',$value.'%');
+        elseif($value==false)
+        $this->assign('_upvote','No comments already. Be the first!');
+        if($value=='&')
+        $this->assign('_upvote','0%');
+    }
+
 
 }

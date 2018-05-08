@@ -15,5 +15,9 @@ class View extends Smarty {
         $this->cache_dir = $config['smarty']['cache_dir'];
         $this->caching = false;
     }
+
+    public function impostaAdmin($val){
+        $this->assign('admin',$val);
+    }
 }
 ?>

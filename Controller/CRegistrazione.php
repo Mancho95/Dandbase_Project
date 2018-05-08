@@ -62,6 +62,7 @@ class CRegistrazione {
                 $session = USingleton::getInstance('USession');
                 $session->imposta_valore('username',$username);
                 $session->imposta_valore('nome_cognome',$utente->getNome().' '.$utente->getCognome());
+                $session->imposta_valore('password',$utente->getPassword());
                 $session->imposta_valore('timeout',time());
                 return true;
             }
@@ -99,6 +100,9 @@ class CRegistrazione {
                 $FUtente->store($utente);
                 //$this->emailAttivazione($utente);
                 $registrato=true;
+                $path="profileimages/".$dati_registrazione['username'];
+                $path2="profileimages/defaultttt";
+                copy($path2,$path);
             } else {
                 $this->_errore='Error: Passwords dont match!';
             }
@@ -174,7 +178,14 @@ class CRegistrazione {
      */
     public function moduloRegistrazione() {
         $VRegistrazione = USingleton::getInstance('VRegistrazione');
-        $VRegistrazione->setLayout('registrazione');
+        if($this->getUtenteRegistrato()==0){
+            $VRegistrazione->setLayout('registrazione');
+        }
+        else{
+            $this->_avviso='You can\'t go to the registration page if you are logged in!';
+            $VRegistrazione->impostaAvviso($this->_avviso);
+            $VRegistrazione->setLayout('default');
+        }
         return $VRegistrazione->processaTemplate();
     }
 
@@ -202,11 +213,17 @@ class CRegistrazione {
      */
     public function moduloLogin() {
         $VRegistrazione = USingleton::getInstance('VRegistrazione');
-        $VRegistrazione->setLayout('moduloLogin');
-        if( isset($_REQUEST['idAnnuncio']) )
-            $VRegistrazione->impostaDati('annuncio',$_REQUEST['idAnnuncio']);
+        if($this->getUtenteRegistrato()==0){
+            $VRegistrazione->setLayout('moduloLogin');
+        }
+        else{
+            $this->_avviso='You can\'t go to the login page if you are logged in!';
+            $VRegistrazione->impostaAvviso($this->_avviso);
+            $VRegistrazione->setLayout('default');
+        }
         return $VRegistrazione->processaTemplate();
     }
+
 
     /**
      * Effettua il logout
@@ -216,8 +233,9 @@ class CRegistrazione {
         $session->cancella_valore('username');
         $session->cancella_valore('nome_cognome');
         $VRegistrazione = USingleton::getInstance('VRegistrazione');
-        $this->_check=false;
-        $VRegistrazione->setLayout('logout');
+        $this->_avviso='Logged out correctly!';
+        $VRegistrazione->impostaAvviso($this->_avviso);
+        $VRegistrazione->setLayout('default');
         return $VRegistrazione->processaTemplate();
     }
 
@@ -234,7 +252,8 @@ class CRegistrazione {
         else if($this->getUtenteRegistrato()){
             $this->_avviso='Logged in correctly!';
             $view->impostaAvviso($this->_avviso);
-            $view->setLayout('loggato');
+            $view->impostaLoggato(true);
+            $view->setLayout('default');
             return $view->processaTemplate(); // home
         }
         else if($this->getUtenteRegistrato()==false){
@@ -257,7 +276,8 @@ class CRegistrazione {
         $view=new VRegistrazione();
         if($this->getUtenteRegistrato()){
             $view->impostaAvviso('');
-            $view->setLayout('loggato');
+            $view->impostaLoggato(true);
+            $view->setLayout('default');
             return $view->processaTemplate();
         }
         else {

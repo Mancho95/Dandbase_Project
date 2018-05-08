@@ -1,14 +1,15 @@
 <form method="post" action="index.php">
 <div id="staff" class="container">
     <div class="title">
-    {$errore}
+        <b><a color="#690813">{$errore}</a></b>
         <b><fieldset class="bordo"><legend>&nbsp;Your Profile</legend>
-            <p style="float: left;"><img src="images/bulba.jpg" width="250" height="250" alt="" /></p>
+            <p style="float: left;"><img src="profileimages/{$username}" width="250" height="250" alt="" /></p>
             <p><font size="6.5" color="#690813">&nbsp {$username}</font></p>
-            <p><font size="2.5" color="black">&nbsp Your e-mail:{$mail}</font></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=upload&task=modulo" class="button"> Upload Adventure</a></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=registrazione&task=registra" class="button"> Change password &nbsp</a></p>
+            <p><font size="2.5" color="black">&nbsp&nbsp&nbsp&nbsp Your e-mail: {$mail}</font></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changeimg" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=upload&task=modulo" class="button"> Upload Adventure</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changeem" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changepw" class="button"> Change password &nbsp</a></p>
         </fieldset></b>
+        {if $_adventures_list!=0}
         <p><input type="hidden" name="controller" value="ricerca" /></p>
         <p><input type="hidden" name="task" value="mostra" /></p>
         <b><fieldset class="bordo"><legend>&nbsp;Your adventures</legend>
@@ -25,6 +26,7 @@
                         </p>
             </br>
                     {/section}
+                {/if}
         </fieldset></b>
     </div>
 </div>

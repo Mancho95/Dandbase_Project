@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-04-17 11:28:08
+<?php /* Smarty version 2.6.26, created on 2018-05-08 13:49:42
          compiled from registrazione_registrazione.tpl */ ?>
 <div id="staff" class="container">
 <div class="title">

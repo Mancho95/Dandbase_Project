@@ -4,6 +4,9 @@ class CUpload {
 
     private $_errore='';
 
+    public function setErrore($errore){
+        $this->_errore=$errore;
+    }
     /**
      * Crea un utente sul database controllando che non esista già
      *
@@ -18,15 +21,16 @@ class CUpload {
         $i=0;
         $uploaded=false;
         $count=array_filter($dati_avventura);
-        if(count($dati_avventura)==count($count)) {
-            foreach ($dati_avventura as $dato) {
-                $avventura->$keys[$i] = $dato;
-                $i++;
-            }
-            $FAvventura->store($avventura);
-            $uploaded = true;
+        if($this->_errore!="You must upload a map!") {
+            if (count($dati_avventura) == count($count)) {
+                foreach ($dati_avventura as $dato) {
+                    $avventura->$keys[$i] = $dato;
+                    $i++;
+                }
+                $FAvventura->store($avventura);
+                $uploaded = true;
+            } else $this->_errore = 'There are some empty fields';
         }
-        else $this->_errore='There are some empty fields';
         if (!$uploaded) {
             $view->impostaErrore($this->_errore);
             $this->_errore='';
@@ -48,6 +52,30 @@ class CUpload {
         return $VUpload->processaTemplate();
     }
 
+    public function deleteAdventure(){
+    $view=USingleton::getInstance('VUpload');
+    $FAvventura=new FAvventura;
+    $param=$view->getDatiMostra();
+    $avventura=$FAvventura->loadMostra($param);
+    $FAvventura->delete($avventura[0]);
+    $view2=USingleton::getInstance('VRegistrazione');
+    $view2->setLayout('default');
+    $view2->impostaAvviso('Adventure deleted');
+    return $view2->processaTemplate();
+    }
+
+    public function deleteComment(){
+        $view=USingleton::getInstance('VUpload');
+        $FCommento=new FCommento;
+        $param=$view->getDatiMostra();
+        $commento=$FCommento->loadCommento($param);
+        $FCommento->delete($commento[0]);
+        $view2=USingleton::getInstance('VRegistrazione');
+        $view2->setLayout('default');
+        $view2->impostaAvviso('Comment deleted');
+        return $view2->processaTemplate();
+    }
+
     public function smista() {
         $view=USingleton::getInstance('VUpload');
         switch ($view->getTask()) {
@@ -55,6 +83,10 @@ class CUpload {
                 return $this->creaAvventura();
             case 'modulo':
                 return $this->moduloUpload();
+            case 'deletea':
+                return $this->deleteAdventure();
+            case 'deletec':
+                return $this->deleteComment();
         }
     }
 }

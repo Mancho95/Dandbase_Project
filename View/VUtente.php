@@ -86,6 +86,10 @@ class VUtente extends View {
         $this->assign('errore',$errore);
     }
 
+    public function impostaUsername($user){
+        $this->assign('user',$user);
+    }
+
     /**
      * imposta il layout
      *

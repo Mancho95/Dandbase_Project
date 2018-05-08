@@ -10,20 +10,20 @@ class ECommento
     /**
      * @AttributeType int
      */
-    public $id;
+    public $cod_avventura;
     /**
      * @AttributeType string
      */
-    public $text;
+    public $testo;
     /**
-     * @AttributeType string
+     * @AttributeType bool
      */
-    public $preference;
+    public $upvote;
     /**
      * @AssociationType Entity.EUtente
      * @AssociationMultiplicity 1
      */
-    public $_user;
+    public $username;
 
     /** Set dell'utente che ha commentato
      * @access public

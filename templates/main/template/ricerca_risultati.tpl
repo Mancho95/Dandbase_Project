@@ -16,6 +16,7 @@
                         <span class="margine_d2"><font size="4.5" color="black">{$_adventures_list[i]->versione}</font></span>
                         <span class="centrato"><font size="4.5" color="black">{$_adventures_list[i]->nome}</font></span>
                     </p>
+            </br>
                 {/section}
                 {/if}
                 {if $_adventures_list==0}

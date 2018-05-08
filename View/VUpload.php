@@ -40,6 +40,13 @@ class VUpload extends View {
             return false;
     }
 
+    public function getDatiMostra() {
+        if (isset($_REQUEST['cod_avventura']))
+            return $_REQUEST['cod_avventura'];
+        else
+            return false;
+    }
+
     /**
      * @return string
      */
@@ -83,14 +90,12 @@ class VUpload extends View {
      * @return array();
      */
     public function getDatiAvventura() {
-        $dati_richiesti=array('username','nome','descrizione','versione','file');
+        $dati_richiesti=array('username','nome','descrizione','versione');
         $dati=array();
         foreach ($dati_richiesti as $dato) {
             if (isset($_REQUEST[$dato]))
                 $dati[$dato]=$_REQUEST[$dato];
         }
-        $dati['file']= fopen($_FILES["file"]["tmp_name"], 'r');
-        var_dump($dati);
         return $dati;
     }
 

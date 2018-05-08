@@ -15,7 +15,23 @@ class FAvventura extends Fdb
     }
     public function loadRicerche($param){
         $parametri=array();
+        if($param['nome']==0 && count($param)==2){
+            unset($param['nome']);
+            $casex=true;
+        }
+        $keys=array_keys($param);
+        if(count($param)==2)
+            $parametri[]=array('nome','=',$param['nome'],'versione','=',$param['versione']);
+        elseif($keys[0]=='nome')
+            $parametri[]=array('nome','=',$param['nome']);
+        elseif($casex==true)
+            $parametri[]=array('versione','=',$param['versione']);
+        /*if($param['nome']==true && $param['versione']==true)
         $parametri[]=array('nome','=',$param['nome'],'versione','=',$param['versione']);
+        elseif($param['nome']!=true && $param['versione']==true)
+        $parametri[]=array('versione','=',$param['versione']);
+        if($param['nome']==true && $param['versione']!=true)
+        $parametri[]=array('nome','=',$param['nome']);*/
         $arrayCommenti=parent::search($parametri);
         return $arrayCommenti;
     }
@@ -33,6 +49,14 @@ class FAvventura extends Fdb
         $arrayCommenti=parent::search($parametri);
         return $arrayCommenti;
     }
+
+    /*public function unsetAdv($cod_avventura){
+        $parametri=array();
+        $parametri[]=array('cod_avventura','=',$cod_avventura);
+        $arrayCommenti=parent::delete($parametri);
+        return $arrayCommenti;
+    }*/
+
 
     public function store($object) {
         $i=0;
