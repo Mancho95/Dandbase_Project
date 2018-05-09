@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-08 16:58:48
+<?php /* Smarty version 2.6.26, created on 2018-05-08 23:42:29
          compiled from upload_default.tpl */ ?>
 <div id="staff" class="container">
     <div class="title">
@@ -16,7 +16,7 @@
                         <input type="radio" name="versione" id="versione" class="field" value="3" tabindex="4" />3
                         <input type="radio" name="versione" id="versione" class="field" value="4.0" tabindex="4" />4.0
                         <input type="radio" name="versione" id="versione" class="field" value="Pathfinder" tabindex="4" />Pathfinder</p>
-                    <p><label for="file" class="left">File:</label>
+                    <p><label for="file" class="left">Map:</label>
                         <input type="file" name="fileToUpload" id="fileToUpload" class="field" tabindex="5"></p>
                     <input type="hidden" name="controller" value="upload" />
                     <input type="hidden" name="task" value="upload" />

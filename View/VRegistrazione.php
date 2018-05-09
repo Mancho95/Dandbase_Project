@@ -1,17 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: enrico
- * Date: 06/08/17
- * Time: 17.13
+ * @access public
+ * @package View
  */
-
 class VRegistrazione extends View {
     /**
      * @var string $_layout
      */
     private $_layout='moduloLogin';
-
     /**
      * restituisce la password passata tramite GET o POST
      *
@@ -23,7 +19,6 @@ class VRegistrazione extends View {
         else
             return false;
     }
-
     /**
      * restituisce la username passata tramite GET o POST
      *
@@ -35,8 +30,9 @@ class VRegistrazione extends View {
         else
             return false;
     }
-
     /**
+     * Restituisce il task passato tramite GET o POST
+     *
      * @return mixed
      */
     public function getTask() {
@@ -45,8 +41,9 @@ class VRegistrazione extends View {
         else
             return false;
     }
-
     /**
+     * Restituisce il controller passato tramite GET o POST
+     *
      * @return mixed
      */
     public function getController() {
@@ -55,15 +52,15 @@ class VRegistrazione extends View {
         else
             return false;
     }
-
     /**
+     * Restituisce il template
+     *
      * @return string
      */
     public function processaTemplate() {
         $contenuto=$this->fetch('registrazione_'.$this->_layout.'.tpl');
         return $contenuto;
     }
-
     /**
      * Imposta l'eventuale errore nel template
      *
@@ -72,16 +69,22 @@ class VRegistrazione extends View {
     public function impostaErrore($errore) {
         $this->assign('errore',$errore);
     }
-
+    /**
+     * Imposta l'eventuale avviso nel template
+     *
+     * @param string $avviso
+     */
     public function impostaAvviso($avviso) {
         $this->assign('avviso',$avviso);
     }
-
+    /**
+     * Imposta la variabile per vedere se un utente è loggato nel template
+     *
+     * @param string $loggato
+     */
     public function impostaLoggato($loggato){
         $this->assign('loggato',$loggato);
     }
-
-
     /**
      * imposta il layout
      *
@@ -90,17 +93,6 @@ class VRegistrazione extends View {
     public function setLayout($layout) {
         $this->_layout=$layout;
     }
-
-    /** USATA PER LA MAIL DI ATTIVAZIONE
-     * Imposta i dati nel template identificati da una chiave ed il relativo valore
-     *
-     * @param string $key
-     * @param mixed $valore
-     *
-    public function impostaDati($key,$valore) {
-    $this->assign($key,$valore);
-    }*/
-
     /**
      * Restituisce l'array contenente i dati di registrazione
      *
@@ -115,19 +107,6 @@ class VRegistrazione extends View {
         }
         return $dati;
     }
-
-    /**
-     * Restituisce annuncio dal quale è partito il login
-     *
-     * @return string;
-     */
-    public function getAnnuncioOldURL() {
-        if( isset($_REQUEST['idAnnuncio']) )
-            return ($_REQUEST['idAnnuncio']);
-        else
-            return false;
-    }
-
     /**
      * Imposta i dati nel template identificati da una chiave ed il relativo valore
      *
@@ -137,17 +116,4 @@ class VRegistrazione extends View {
     public function impostaDati($key,$valore) {
         $this->assign($key,$valore);
     }
-
-    /**
-     * Restituisce un array contenente i dati di attivazione
-     *
-     * @return mixed
-     */
-    /*public function getDatiAttivazione() {
-        if(isset($_REQUEST['codice_attivazione']) && isset($_REQUEST['username']))
-            return array('codice'=>$_REQUEST['codice_attivazione'], 'username'=>$_REQUEST['username']);
-        else
-            return false;
-    }*/
-
 }

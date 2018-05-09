@@ -1,18 +1,26 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: enrico
- * Date: 11/08/17
- * Time: 16.39
+ * @access public
+ * @package Controller
  */
-
 class CUtente {
+    /**
+     * @var string $_errore
+     */
     private $_errore = '';
-
+    /**
+     * Setta il valore della variabile $_errore, utilizzato in CHome per prendere gli errori da index.php
+     *
+     * @param string $errore
+     */
     public function setErrore($errore){
         $this->_errore=$errore;
     }
-
+    /**
+     * Mostra il profilo dell'utente loggato
+     *
+     * @return string
+     */
     public function mostra() {
         $view = USingleton::getInstance('VUtente');
         if($this->_errore==true)
@@ -31,8 +39,11 @@ class CUtente {
         $view->impostaAvventure($avventura);
         return $view->processaTemplate();
     }
-
-
+    /**
+     * Modifica la password dell'utente loggato, poi restituisce un template per avvertire dell'avvenuta/mancata modifica
+     *
+     * @return string
+     */
     public function modificaPassword () {
         $view = USingleton::getInstance('VUtente');
         $modifiche = $view->getModifiche();
@@ -66,9 +77,12 @@ class CUtente {
             $view->setLayout('default');
             return $view->processaTemplate();
         }
-
     }
-
+    /**
+     * Modifica l'email dell'utente loggato, poi restituisce un template per avvertire dell'avvenuta/mancata modifica
+     *
+     * @return string
+     */
     public function modificaMail () {
         $view = USingleton::getInstance('VUtente');
         $modifiche = $view->getModifiche();
@@ -100,26 +114,42 @@ class CUtente {
             return $view->processaTemplate();
         }
     }
-
+    /**
+     * Restituisce il form per modificare l'immagine del profilo
+     *
+     * @return string
+     */
     public function profilepic() {
         $VUtente = USingleton::getInstance('VUtente');
         $VUtente->impostaDati('username', $_SESSION['username']);
         $VUtente->setLayout('uploadimg');
         return $VUtente->processaTemplate();
     }
-
+    /**
+     * Restituisce il form per modificare la password
+     *
+     * @return string
+     */
     public function changepw(){
         $VUtente=USingleton::getInstance('VUtente');
         $VUtente->setLayout('cambiopw');
         return $VUtente->processaTemplate();
     }
-
+    /**
+     * Restituisce il form per modificare l'email
+     *
+     * @return string
+     */
     public function changeem(){
         $VUtente=USingleton::getInstance('VUtente');
         $VUtente->setLayout('cambioem');
         return $VUtente->processaTemplate();
     }
-
+    /**
+     * Smista le richieste ai vari metodi
+     *
+     * @return mixed
+     */
     public function smista() {
         $view=USingleton::getInstance('VUtente');
         switch ($view->getTask()) {
@@ -137,5 +167,4 @@ class CUtente {
                 return $this->modificaMail();
         }
     }
-
 }

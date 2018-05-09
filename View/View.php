@@ -4,8 +4,10 @@ require('lib/smarty/Smarty.class.php');
  * @access public
  * @package View
  */
-
 class View extends Smarty {
+    /**
+     * Costruttore di classe
+     */
     public function __construct() {
         $this->Smarty();
         global $config;
@@ -15,7 +17,11 @@ class View extends Smarty {
         $this->cache_dir = $config['smarty']['cache_dir'];
         $this->caching = false;
     }
-
+    /**
+     * Imposta la variabile smarty per l'amministratore
+     *
+     * @param string $val
+     */
     public function impostaAdmin($val){
         $this->assign('admin',$val);
     }

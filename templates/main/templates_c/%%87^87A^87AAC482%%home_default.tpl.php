@@ -1,6 +1,5 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-08 18:17:56
+<?php /* Smarty version 2.6.26, created on 2018-05-09 14:20:44
          compiled from home_default.tpl */ ?>
-<?php $pathPROVVISORIA = "/Dandbase_Project"; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
 Design by TEMPLATED
@@ -36,10 +35,6 @@ Released   : 20140131
 		</div>
 		<div id="menu">
 			<ul>
-				<?php if ($this->_tpl_vars['nick'] != false): ?>
-				<li><a href="?controller=profile&task=mostra"><?php echo $this->_tpl_vars['nick']; ?>
-</a></li>
-                <?php endif; ?>
                 <?php if ($this->_tpl_vars['tasti_in_cima'] != false): ?>
                     <?php unset($this->_sections['i']);
 $this->_sections['i']['name'] = 'i';

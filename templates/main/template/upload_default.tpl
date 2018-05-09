@@ -13,7 +13,7 @@
                         <input type="radio" name="versione" id="versione" class="field" value="3" tabindex="4" />3
                         <input type="radio" name="versione" id="versione" class="field" value="4.0" tabindex="4" />4.0
                         <input type="radio" name="versione" id="versione" class="field" value="Pathfinder" tabindex="4" />Pathfinder</p>
-                    <p><label for="file" class="left">File:</label>
+                    <p><label for="file" class="left">Map:</label>
                         <input type="file" name="fileToUpload" id="fileToUpload" class="field" tabindex="5"></p>
                     <input type="hidden" name="controller" value="upload" />
                     <input type="hidden" name="task" value="upload" />

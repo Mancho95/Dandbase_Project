@@ -1,13 +1,12 @@
-<?php /* Smarty version 2.6.26, created on 2018-04-18 14:53:35
+<?php /* Smarty version 2.6.26, created on 2018-05-08 23:12:15
          compiled from registrazione_moduloLogin.tpl */ ?>
 <form method="post" action="index.php">
     <div id="staff" class="container">
     <div class="title">
-        <p><input type="hidden" name="rememberme" value="0" /></p>
+        <b><a color="#690813"><?php echo $this->_tpl_vars['errore']; ?>
+</a></b>
         <p><input type="hidden" name="controller" value="registrazione" /></p>
         <p><input type="hidden" name="task" value="autentica" /></p>
-        <p><input type="hidden" name="idAnnuncio" value="<?php echo $this->_tpl_vars['annuncio']; ?>
-" /></p>
         <b><h2>Enter your login infos here!</h2>
         <fieldset class="bordo">
             <p><label for="username" class="left">Username:</label><br />

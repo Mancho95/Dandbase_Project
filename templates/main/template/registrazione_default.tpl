@@ -9,7 +9,7 @@
 	</div>
 	<div id="page" class="container">
 		<div class="boxA">
-			<h2>Upload your adventure<br />
+			<h2>Upload your adventure <br />
 				<span></span></h2>
 			<p>Share your fantastic adventures, let other players test it and wait for their feedback.</p>
 			<ul class="style4">

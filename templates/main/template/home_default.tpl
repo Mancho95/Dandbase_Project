@@ -1,4 +1,3 @@
-{php}$pathPROVVISORIA = "/Dandbase_Project";{/php}
 {* Smarty *}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
@@ -33,9 +32,6 @@ Released   : 20140131
 		</div>
 		<div id="menu">
 			<ul>
-				{if $nick!=false}
-				<li><a href="?controller=profile&task=mostra">{$nick}</a></li>
-                {/if}
                 {if $tasti_in_cima!=false}
                     {section name=i loop=$tasti_in_cima}
 						<li><a href="{$tasti_in_cima[i].link}">{$tasti_in_cima[i].testo}</a></li>

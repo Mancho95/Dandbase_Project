@@ -1,26 +1,27 @@
 <?php
-
+/**
+ * @access public
+ * @package View
+ */
 class VUpload extends View {
     /**
      * @var string $_layout
      */
     private $_layout='default';
-
     /**
      * restituisce la username passata tramite GET o POST
      *
      * @return mixed
      */
-
     public function getUsername() {
         if (isset($_SESSION['username']))
             return $_SESSION['username'];
         else
             return false;
     }
-
-
     /**
+     * Restituisce il task passato tramite GET o POST
+     *
      * @return mixed
      */
     public function getTask() {
@@ -29,8 +30,9 @@ class VUpload extends View {
         else
             return false;
     }
-
     /**
+     * Restituisce il controller passato tramite GET o POST
+     *
      * @return mixed
      */
     public function getController() {
@@ -39,15 +41,20 @@ class VUpload extends View {
         else
             return false;
     }
-
+    /**
+     * Restituisce il cod_avventura passato tramite GET o POST
+     *
+     * @return mixed
+     */
     public function getDatiMostra() {
         if (isset($_REQUEST['cod_avventura']))
             return $_REQUEST['cod_avventura'];
         else
             return false;
     }
-
     /**
+     * Processa il layout scelto nella variabile _layout
+     *
      * @return string
      */
     public function processaTemplate() {
@@ -55,7 +62,6 @@ class VUpload extends View {
         $contenuto=$this->fetch('upload_'.$this->_layout.'.tpl');
         return $contenuto;
     }
-
     /**
      * Imposta l'eventuale errore nel template
      *
@@ -64,7 +70,6 @@ class VUpload extends View {
     public function impostaErrore($errore) {
         $this->assign('errore',$errore);
     }
-
     /**
      * imposta il layout
      *
@@ -73,7 +78,6 @@ class VUpload extends View {
     public function setLayout($layout) {
         $this->_layout=$layout;
     }
-
     /**
      * Imposta i dati nel template identificati da una chiave ed il relativo valore
      *
@@ -83,7 +87,6 @@ class VUpload extends View {
     public function impostaDati($key,$valore) {
         $this->assign($key,$valore);
     }
-
     /**
      * Restituisce l'array contenente i dati dell'avventura
      *
@@ -98,5 +101,4 @@ class VUpload extends View {
         }
         return $dati;
     }
-
 }

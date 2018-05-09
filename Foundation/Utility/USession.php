@@ -1,35 +1,58 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: enrico
- * Date: 06/08/17
- * Time: 14.54
+ * @access public
+ * @package Foundation
+ * @subpackage Utility
  */
-
 class USession {
-
-    private $_durataSessione = 360; // in secondi
-
+    /**
+     * @var string $_durataSessione
+     */
+    private $_durataSessione = 360;
+    /**
+     * Costruttore di classe
+     */
     public function __construct() {
         session_start();
         debug($_SESSION);
     }
+    /**
+     * Funzione che setta le variabili di sessione
+     *
+     * @param string $chiave
+     * @param string $valore
+     */
     function imposta_valore($chiave,$valore) {
         $_SESSION[$chiave]=$valore;
     }
+    /**
+     * Funzione che cancella le variabili di sessione
+     *
+     * @param string $chiave
+     */
     function cancella_valore($chiave) {
         unset($_SESSION[$chiave]);
     }
+    /**
+     * Funzione che legge le variabili di sessione
+     *
+     * @param string $chiave
+     */
     function leggi_valore($chiave) {
         if (isset($_SESSION[$chiave]))
             return $_SESSION[$chiave];
         else
             return false;
     }
+    /**
+     * Funzione che controlla l'inattività dell'utente attivo durante la sessione
+     *
+     * @return mixed
+     */
     function controlloInattivita() {
-        if ( !null == $this->leggi_valore('username') ) { // controllo se la sessione esiste
+        if ( !null == $this->leggi_valore('username') ) {
             $inattivita = time() - $this->leggi_valore('timeout');
-            if ($inattivita > $this->_durataSessione) { // controllo il tempo di inattività
+            if ($inattivita > $this->_durataSessione) {
                 session_unset();
                 session_destroy();
                 return true;
@@ -38,5 +61,4 @@ class USession {
         }
         return false;
     }
-
 }

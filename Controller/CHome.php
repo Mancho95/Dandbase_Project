@@ -1,15 +1,9 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: enrico
- * Date: 06/08/17
- * Time: 10.01
+ * @access public
+ * @package Controller
  */
-
 class CHome {
-
-    private $_errore='';
-
     /**
      * Imposta la pagina, controlla l'autenticazione
      */
@@ -18,7 +12,7 @@ class CHome {
         $VHome = USingleton::getInstance('VHome');
         $session = USingleton::getInstance('USession');
         if( $session->controlloInattivita() ) {
-            $CRegistrazione->setErrore("Sessione scaduta. Effettuare di nuovo il login.");
+            $CRegistrazione->setSessionExpired();
             $contenuto = $CRegistrazione->moduloLogin();
         } else {
             $contenuto = $this->smista();
@@ -32,17 +26,20 @@ class CHome {
         }
         $VHome->mostraPagina();
     }
-
+    /**
+     * Prende l'errore da index.php e lo passa al Controller CUtente
+     */
     public function geterrore($errore){
         $CUtente=USingleton::getInstance('CUtente');
         $CUtente->setErrore($errore);
     }
-
+    /**
+     * Prende l'errore da index.php e lo passa al Controller CUpload
+     */
     public function geterrore2($errore){
         $CUpload=USingleton::getInstance('CUpload');
         $CUpload->setErrore($errore);
     }
-
     /**
      * Smista le richieste ai vari controller
      *

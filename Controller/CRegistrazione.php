@@ -1,20 +1,21 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: enrico
- * Date: 06/08/17
- * Time: 12.09
+ * @access public
+ * @package Controller
  */
-
 class CRegistrazione {
-
     /**
      * @var string $_errore
      */
     private $_errore='';
-
+    /**
+     * @var string $_avviso
+     */
     private $_avviso='';
-
+    /**
+     * @var boolean $_session_checker
+     */
+    private $_session_checker=false;
     /**
      * Controlla se l'utente è registrato ed autenticato
      *
@@ -30,14 +31,10 @@ class CRegistrazione {
         $this->_password = $VRegistrazione->getPassword();
         if ($session->leggi_valore('username') != false) {
             $autenticato = true;
-            //var_dump($session->leggi_valore('username'));
-            //autenticato
         } elseif ($task == 'autentica' && $controller == 'registrazione') {
-            //controlla autenticazione
             $autenticato = $this->autentica($this->_username, $this->_password);
         }
         if ($task == 'esci' && $controller == 'registrazione') {
-            //logout
             $this->logout();
             $autenticato = false;
         }
@@ -45,7 +42,6 @@ class CRegistrazione {
         $this->_errore = '';
         return $autenticato;
     }
-
     /**
      * Controlla se una coppia username e password corrispondono ad un utente registrato ed in tal caso impostano le variabili di sessione relative all'autenticazione
      *
@@ -56,7 +52,6 @@ class CRegistrazione {
     public function autentica($username, $password) {
         $FUtente = new FUtente();
         $utente = $FUtente->load($username);
-        $view=USingleton::getInstance('VRegistrazione');
         if ($utente != false) {
             if ($username == $utente->getUsername() && $password == $utente->getPassword()) {
                 $session = USingleton::getInstance('USession');
@@ -66,13 +61,12 @@ class CRegistrazione {
                 $session->imposta_valore('timeout',time());
                 return true;
             }
-            else $this->_errore='Username o password errati';//username password errati
+            else $this->_errore='Username o password errati';
         }
-        else $this->_errore='L\'account non esiste'; //account non esiste
+        else $this->_errore='L\'account non esiste';
 
         return false;
     }
-
     /**
      * Crea un utente sul database controllando che non esista già
      *
@@ -86,7 +80,6 @@ class CRegistrazione {
         $result = $FUtente->load($dati_registrazione['username']);
         $registrato=false;
         if ($result==false) {
-            //utente non esiste
             if($dati_registrazione['password_1']==$dati_registrazione['password']) {
                 unset($dati_registrazione['password_1']);
                 $keys=array_keys($dati_registrazione);
@@ -95,10 +88,7 @@ class CRegistrazione {
                     $utente->$keys[$i]=$dato;
                     $i++;
                 }
-                //$utente->generaCodiceAttivazione();
-                //var_dump($utente);
                 $FUtente->store($utente);
-                //$this->emailAttivazione($utente);
                 $registrato=true;
                 $path="profileimages/".$dati_registrazione['username'];
                 $path2="profileimages/defaultttt";
@@ -107,7 +97,6 @@ class CRegistrazione {
                 $this->_errore='Error: Passwords dont match!';
             }
         } else {
-            //utente esistente
             $this->_errore='Error: Username already used!';
         }
         if (!$registrato) {
@@ -124,53 +113,6 @@ class CRegistrazione {
             return $view->processaTemplate();
         }
     }
-
-    /**
-     * Invia un email contenente il codice di attivazione per un utente appena registrato
-     *
-     * @global array $config
-     * @param EUtente $utente
-     * @return boolean
-     */
-    /*public function emailAttivazione(EUtente $utente) {
-        global $config;
-        $view=USingleton::getInstance('VRegistrazione');
-        $view->setLayout('email_attivazione');
-        $view->impostaDati('username',$utente->username);
-        $view->impostaDati('nome_cognome',$utente->nome.' '.$utente->cognome);
-        $view->impostaDati('codice_attivazione',$utente->getCodiceAttivazione());
-        $view->impostaDati('email_webmaster',$config['email_webmaster']);
-        $view->impostaDati('url',$config['url_bookstore']);
-        $corpo_email=$view->processaTemplate();
-        $email=USingleton::getInstance('UEmail');
-        return $email->invia_email($utente->email,$utente->nome.' '.$utente->cognome,'Attivazione account bookstore',$corpo_email);
-    }*/
-
-    /**
-     * Attiva un utente che inserisce un codice di attivazione valido oppure clicca sul link di autenticazione nell'email
-     *
-     * @return string
-     */
-    /*public function attivazione() {
-        $view = USingleton::getInstance('VRegistrazione');
-        $dati_attivazione=$view->getDatiAttivazione();
-        $FUtente=new FUtente();
-        $utente=$FUtente->load($dati_attivazione['username']);
-        if ($dati_attivazione!=false) {
-            if ($utente->getCodiceAttivazione()==$dati_attivazione['codice']) {
-                $utente->stato='attivo';
-                $FUtente->update($utente);
-                $view->setLayout('conferma_attivazione');
-            } else {
-                $view->impostaErrore('Il codice di attivazione &egrave; errato');
-                $view->setLayout('problemi');
-            }
-        } else {
-            $view->setLayout('attivazione');
-        }
-        return $view->processaTemplate();
-    }*/
-
     /**
      * Mostra il modulo di registrazione
      *
@@ -188,22 +130,24 @@ class CRegistrazione {
         }
         return $VRegistrazione->processaTemplate();
     }
-
+    /**
+     * Mostra la pagina delle Frequently Asked Questions
+     *
+     * @return string
+     */
     public function moduloFAQ() {
         $VRegistrazione = USingleton::getInstance('VRegistrazione');
         $VRegistrazione->setLayout('FAQ');
         return $VRegistrazione->processaTemplate();
     }
-
+    /**
+     * Mostra la pagina per contattare l'amministratore
+     *
+     * @return string
+     */
     public function modulocontatta() {
         $VRegistrazione = USingleton::getInstance('VRegistrazione');
         $VRegistrazione->setLayout('contattaci');
-        return $VRegistrazione->processaTemplate();
-    }
-
-    public function modulologgato() {
-        $VRegistrazione = USingleton::getInstance('VUtente');
-        $VRegistrazione->setLayout('default');
         return $VRegistrazione->processaTemplate();
     }
     /**
@@ -213,6 +157,11 @@ class CRegistrazione {
      */
     public function moduloLogin() {
         $VRegistrazione = USingleton::getInstance('VRegistrazione');
+        if($this->_session_checker==true){
+            $this->_errore='Session expired! Please login again!';
+            $VRegistrazione->impostaAvviso($this->_errore);
+            $this->_session_checker=false;
+        }
         if($this->getUtenteRegistrato()==0){
             $VRegistrazione->setLayout('moduloLogin');
         }
@@ -223,38 +172,35 @@ class CRegistrazione {
         }
         return $VRegistrazione->processaTemplate();
     }
-
-
     /**
      * Effettua il logout
+     *
+     * @return string
      */
     public function logout() {
         $session = USingleton::getInstance('USession');
         $session->cancella_valore('username');
         $session->cancella_valore('nome_cognome');
+        $session->cancella_valore('password');
         $VRegistrazione = USingleton::getInstance('VRegistrazione');
         $this->_avviso='Logged out correctly!';
         $VRegistrazione->impostaAvviso($this->_avviso);
         $VRegistrazione->setLayout('default');
         return $VRegistrazione->processaTemplate();
     }
-
     /**
-     * Reindirizza alla home, o all'url dell'annuncio precedente il login
+     * Reindirizza alla home dopo il login
+     *
+     * @return string
      */
     public function reindirizza() {
-        $view = new VRegistrazione();;
-        if ( $view->getAnnuncioOldURL() ){
-            $view = new VRegistrazione();
-            $oldAnnuncioID = $view->getAnnuncioOldURL();
-            return CRicerca::dettagli($oldAnnuncioID);  // reindirizza all'annuncio visualizzato prima del login
-        }
-        else if($this->getUtenteRegistrato()){
+        $view = USingleton::getInstance('VRegistrazione');
+        if($this->getUtenteRegistrato()){
             $this->_avviso='Logged in correctly!';
             $view->impostaAvviso($this->_avviso);
             $view->impostaLoggato(true);
             $view->setLayout('default');
-            return $view->processaTemplate(); // home
+            return $view->processaTemplate();
         }
         else if($this->getUtenteRegistrato()==false){
             $this->_errore='User and password dont match!';
@@ -267,11 +213,12 @@ class CRegistrazione {
             $view->impostaErrore('');
             return $result;
         }
-
-
-
     }
-
+    /**
+     * Reindirizza alla home quando viene cliccato un tasto che porta alla homepage
+     *
+     * @return string
+     */
     public function goHome(){
         $view=new VRegistrazione();
         if($this->getUtenteRegistrato()){
@@ -285,18 +232,12 @@ class CRegistrazione {
             return $view->processaTemplate();
         }
     }
-
     /**
-     * Set dell'errore (usato solo da CHome quando la sessione è scaduta
+     * Set della variabile _session_checker che serve a controllare se la sessione è scaduta
      */
-    public function setErrore($errore) {
-        $view = USingleton::getInstance('VRegistrazione');
-        $view->impostaErrore($errore);
-        $this->_errore = '';
+    public function setSessionExpired(){
+        $this->_session_checker=true;
     }
-
-
-
     /**
      * Smista le richieste ai relativi metodi della classe
      *

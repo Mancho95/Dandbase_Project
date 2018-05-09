@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-08 17:58:28
+<?php /* Smarty version 2.6.26, created on 2018-05-08 23:40:19
          compiled from registrazione_default.tpl */ ?>
 <div id="staff" class="container">
 		<div class="title">
@@ -12,7 +12,7 @@
 	</div>
 	<div id="page" class="container">
 		<div class="boxA">
-			<h2>Upload your adventure<br />
+			<h2>Upload your adventure <br />
 				<span></span></h2>
 			<p>Share your fantastic adventures, let other players test it and wait for their feedback.</p>
 			<ul class="style4">

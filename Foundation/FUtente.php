@@ -4,6 +4,9 @@
  * @package Foundation
  */
 class FUtente extends Fdb{
+    /**
+     * Costruttore di classe
+     */
     public function __construct() {
         $this->_table='utente';
         $this->_key='username';
@@ -11,5 +14,4 @@ class FUtente extends Fdb{
         USingleton::getInstance('Fdb');
     }
 }
-
 ?>

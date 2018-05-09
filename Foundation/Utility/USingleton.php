@@ -11,7 +11,6 @@ class USingleton
      * della nostra classe.
      */
     private static $instances = array();
-
     /**
      * Il costruttore in cui ci occuperemo di inizializzare la nostra
      * classe. E' opportuno specificarlo come privato in modo che venga
@@ -22,9 +21,10 @@ class USingleton
     {
         // vuoto
     }
-
     /**
      * Il metodo statico che si occupa di restituire l'istanza univoca della classe.
+     *
+     * @return mixed
      */
     public static function getInstance($c)
     {

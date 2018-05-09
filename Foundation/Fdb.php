@@ -29,14 +29,15 @@ class Fdb {
      */
     protected $_auto_increment=false;
     /**
-     *
-     * @global array $config
+     * Costruttore di classe
      */
     public function __construct() {
         global $config;
         $this->connect($config['mysql']['host'], $config['mysql']['password'], $config['mysql']['user'], $config['mysql']['database']);
     }
     /**
+     * Serve per connettersi al database
+     *
      * @param string $host
      * @param string $user
      * @param string $password
@@ -143,7 +144,7 @@ class Fdb {
             return false;
     }
     /**
-     * Effettua la connessione al database
+     * Chiude la connessione al database
      */
     public function close() {
         mysql_close($this->_connection);
@@ -232,28 +233,7 @@ class Fdb {
         $query='UPDATE `'.$this->_table.'` SET '.$fields.' WHERE `'.$this->_key.'` = \''.$arrayObject[$this->_key].'\'';
         return $this->query($query);
     }
-    /**
-     * Effettua una ricerca sul database
-     *
-     * @param array $parametri
-     * @return array
-     */
-    /*function search($parametri = array()) {
-        $filtro='';
-        for ($i=0; $i<count($parametri); $i++) {
-            if ($i>0)
-            $filtro .= 'nome='.'\''.$parametri['nome'].'\''.' AND '.'versione='.'\''.$parametri['versione'].'\'';
-        }
-        $query='SELECT * ' .
-                'FROM '.$this->_table;
-        if ($filtro != '')
-            $query.=' WHERE '.$filtro.' ';
-        var_dump($query);
-        $this->query($query);
-        return $this->getObjectArray();
-    }*/
-
-    /** Effettua una ricerca sul database //DA TESTARE
+    /** Effettua una ricerca sul database
      * @access public
      * @param array $parametri
      * @param string $ordinamento
@@ -278,5 +258,4 @@ class Fdb {
         return $this->getObjectArray();
     }
 }
-
 ?>

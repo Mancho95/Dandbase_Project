@@ -1,10 +1,9 @@
 <form method="post" action="index.php">
     <div id="staff" class="container">
     <div class="title">
-        <p><input type="hidden" name="rememberme" value="0" /></p>
+        <b><a color="#690813">{$errore}</a></b>
         <p><input type="hidden" name="controller" value="registrazione" /></p>
         <p><input type="hidden" name="task" value="autentica" /></p>
-        <p><input type="hidden" name="idAnnuncio" value="{$annuncio}" /></p>
         <b><h2>Enter your login infos here!</h2>
         <fieldset class="bordo">
             <p><label for="username" class="left">Username:</label><br />

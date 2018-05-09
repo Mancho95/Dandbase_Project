@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @access public
  * @package Entity
@@ -27,65 +26,49 @@ class EUtente
      */
     public $email;
     /**
-     * @AssociationType Entity.EAvventura
-     * @AssociationMultiplicity 0..*
-     * @AssociationKind Aggregation
-     */
-    public $_adventures=array();
-
-    /** Aggiunge un avventura all'utente
-     * @access public
-     * @param $newAvventura EAvventura
-     */
-    public function addAdventure(EAvventura $newAvventura){
-        $this->_adventures[]=$newAvventura;
-    }
-    /** Ritorna un array contentente tutte le avventure pubblicate dall'utente
-     * @access public
-     * @return array()
-     */
-    public function getUsername(){
-        return $this->username;
-    }
-
-    public function getPassword(){
-        return $this->password;
-    }
-
-    public function getNome(){
-        return $this->nome;
-    }
-
-    public function getCognome(){
-        return $this->cognome;
-    }
-
-    public function getEmail(){
-        return $this->email;
-    }
-
-    public function getAdventure(){
-        return $this->_adventures;
-    }
-    /** Genera il codice di attivazione dell'account
-     * @access public
-     */
-    public function generateRandomCode() {
-        $this->activation_code=substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(20/strlen($x)) )),1,20);
-    }
-    /** Ritorna il codice di attivazione dell'account
-     * @access public
+     * Restituisce il valore della variabile Username dell'entità EUtente
+     *
      * @return string
      */
-    public function getActivationCode(){
-        return $this->activation_code;
+    public function getUsername ()
+    {
+        return $this->username;
     }
-    /** Ritorna il boolean relativo all'attivazione dell'account
-     * @access public
-     * @return boolean
+    /**
+     * Restituisce il valore della variabile Password dell'entità EUtente
+     *
+     * @return string
      */
-    public function getActiveAccount(){
-        return $this->activation;
+    public function getPassword ()
+    {
+        return $this->password;
+    }
+    /**
+     * Restituisce il valore della variabile Nome dell'entità EUtente
+     *
+     * @return string
+     */
+    public function getNome ()
+    {
+        return $this->nome;
+    }
+    /**
+     * Restituisce il valore della variabile Cognome dell'entità EUtente
+     *
+     * @return string
+     */
+    public function getCognome ()
+    {
+        return $this->cognome;
+    }
+    /**
+     * Restituisce il valore della variabile Email dell'entità EUtente
+     *
+     * @return string
+     */
+    public function getEmail ()
+    {
+        return $this->email;
     }
 }
 ?>
