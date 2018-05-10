@@ -8,6 +8,8 @@ class CRicerca {
      * @var string $_errore
      */
     private $_errore = '';
+
+    private $support='';
     /**
      * Carica il modulo di ricerca di un avventura
      *
@@ -39,12 +41,15 @@ class CRicerca {
      */
     public function show(){
         $view=USingleton::getInstance('VRicerca');
-        $view2=USingleton::getInstance('VUtente');
         $view->impostaAdmin($_SESSION['username']);
-        $nick=$view2->getUsername();
-        $view->impostaUsername($nick);
+        $view->impostaUsername($_SESSION['username']);
         $view->setLayout('mostra');
-        $param=$view->getDatiMostra();
+        if($this->support==false)
+            $param=$view->getDatiMostra();
+        else{
+            $param=$this->support;
+            $this->support='';
+            }
         $FCommento=new FCommento();
         $FAvventura = new FAvventura();
         $avventura=$FAvventura->loadMostra($param);
@@ -65,10 +70,8 @@ class CRicerca {
      */
     public function showaftercomment($support){
         $view=USingleton::getInstance('VRicerca');
-        $view2=USingleton::getInstance('VUtente');
         $view->impostaAdmin($_SESSION['username']);
-        $nick=$view2->getUsername();
-        $view->impostaUsername($nick);
+        $view->impostaUsername($_SESSION['username']);
         $view->setLayout('mostra');
         $param=$support;
         $FCommento=new FCommento();
@@ -105,18 +108,18 @@ class CRicerca {
             $view->impostaCommentato();
         }
         else $this->_errore='There are some empty fields, comment not uploaded';
-        $support=$commento->cod_avventura;
+        $this->support=$commento->cod_avventura;
         if (!$uploaded) {
             foreach ($param as $dato) {
                 $commento->$keys[$i] = $dato;
                 $i++;
             }
-            $support=$commento->cod_avventura;
+            $this->support=$commento->cod_avventura;
             $view->impostaErrore($this->_errore);
             $this->_errore='';
-            return $this->showaftercomment($support);
+            return $this->show();
         } else {
-            return $this->showaftercomment($support);
+            return $this->show();
         }
     }
     /**

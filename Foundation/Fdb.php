@@ -174,7 +174,6 @@ class Fdb {
         }
         $query='INSERT INTO '.$this->_table.' ('.$fields.') VALUES ('.$values.')';
         $return = $this->query($query);
-        var_dump($query);
         if ($this->_auto_increment) {
             $query='SELECT LAST_INSERT_ID() AS `id`';
             $this->query($query);
