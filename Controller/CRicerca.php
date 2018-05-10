@@ -148,6 +148,7 @@ class CRicerca {
         $view=USingleton::getInstance('VRicerca');
         $view->setLayout('mostra');
         $view->impostaAdmin($_SESSION['username']);
+        $view->impostaUsername($_SESSION['username']);
         $FAvventura = new FAvventura();
         $FCommento = new FCommento();
         $avventura=$FAvventura->search();
