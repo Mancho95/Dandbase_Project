@@ -63,29 +63,12 @@ class VUpload extends View {
         return $contenuto;
     }
     /**
-     * Imposta l'eventuale errore nel template
-     *
-     * @param string $errore
-     */
-    public function impostaErrore($errore) {
-        $this->assign('errore',$errore);
-    }
-    /**
      * imposta il layout
      *
      * @param string $layout
      */
     public function setLayout($layout) {
         $this->_layout=$layout;
-    }
-    /**
-     * Imposta i dati nel template identificati da una chiave ed il relativo valore
-     *
-     * @param string $key
-     * @param mixed $valore
-     */
-    public function impostaDati($key,$valore) {
-        $this->assign($key,$valore);
     }
     /**
      * Restituisce l'array contenente i dati dell'avventura

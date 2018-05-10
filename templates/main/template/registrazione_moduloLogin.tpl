@@ -1,7 +1,6 @@
 <form method="post" action="index.php">
     <div id="staff" class="container">
     <div class="title">
-        <b><a color="#690813">{$errore}</a></b>
         <p><input type="hidden" name="controller" value="registrazione" /></p>
         <p><input type="hidden" name="task" value="autentica" /></p>
         <b><h2>Enter your login infos here!</h2>

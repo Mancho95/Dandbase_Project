@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-08 19:04:43
+<?php /* Smarty version 2.6.26, created on 2018-05-10 19:36:05
          compiled from ricerca_mostra.tpl */ ?>
 <div id="staff" class="container">
     <div class="title">
@@ -23,7 +23,7 @@
                 <p align="center"><label for="username"><font size="6.5" color="#690813">Upvote Percentage:</font></label><br />
                     <font size="4.5" color="black"><?php echo $this->_tpl_vars['_upvote']; ?>
 </font></p>
-                <?php if ($this->_tpl_vars['admin'] == 'admin'): ?>
+                <?php if ($this->_tpl_vars['user'] == 'admin'): ?>
                 <form method="post" action="index.php" id="form">
                 <p><label for="username"><font size="4.5" color="black">Delete adventure:</font></label><br />
                     <p><input type="hidden" name="controller" value="upload" /></p>
@@ -74,7 +74,7 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
                     <?php if ($this->_tpl_vars['_comments_list'][$this->_sections['i']['index']]->upvote == false): ?>
                     <p align="left"><img src="images/icon_dislike.png" width="32" height="32" alt="" /></p>
                     <?php endif; ?>
-                    <?php if ($this->_tpl_vars['admin'] == 'admin'): ?>
+                    <?php if ($this->_tpl_vars['user'] == 'admin'): ?>
                         <form method="post" action="index.php" id="form">
                         <p><label for="username"><font size="4.5" color="black">Delete comment:</font></label><br />
                         <p><input type="hidden" name="controller" value="upload" /></p>

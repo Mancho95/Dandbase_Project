@@ -38,7 +38,7 @@ class CRegistrazione {
             $this->logout();
             $autenticato = false;
         }
-        $VRegistrazione->impostaErrore($this->_errore);
+        $VRegistrazione->impostaDati('errore',$this->_errore);
         $this->_errore = '';
         return $autenticato;
     }
@@ -56,7 +56,9 @@ class CRegistrazione {
             if ($username == $utente->getUsername() && $password == $utente->getPassword()) {
                 $session = USingleton::getInstance('USession');
                 $session->imposta_valore('username',$username);
-                $session->imposta_valore('nome_cognome',$utente->getNome().' '.$utente->getCognome());
+                $session->imposta_valore('email',$utente->getEmail());
+                $session->imposta_valore('name',$utente->getNome());
+                $session->imposta_valore('surname',$utente->getCognome());
                 $session->imposta_valore('password',$utente->getPassword());
                 $session->imposta_valore('timeout',time());
                 return true;
@@ -100,13 +102,13 @@ class CRegistrazione {
             $this->_errore='Error: Username already used!';
         }
         if (!$registrato) {
-            $view->impostaErrore($this->_errore);
+            $view->impostaDati('errore',$this->_errore);
             $this->_errore='';
             $view->setLayout('problemi');
             $result=$view->processaTemplate();
             $view->setLayout('registrazione');
             $result.=$view->processaTemplate();
-            $view->impostaErrore('');
+            $view->impostaDati('errore','');
             return $result;
         } else {
             $view->setLayout('conferma');
@@ -125,7 +127,7 @@ class CRegistrazione {
         }
         else{
             $this->_avviso='You can\'t go to the registration page if you are logged in!';
-            $VRegistrazione->impostaAvviso($this->_avviso);
+            $VRegistrazione->impostaDati('avviso',$this->_avviso);
             $VRegistrazione->setLayout('default');
         }
         return $VRegistrazione->processaTemplate();
@@ -159,7 +161,7 @@ class CRegistrazione {
         $VRegistrazione = USingleton::getInstance('VRegistrazione');
         if($this->_session_checker==true){
             $this->_errore='Session expired! Please login again!';
-            $VRegistrazione->impostaAvviso($this->_errore);
+            $VRegistrazione->impostaDati('avviso',$this->_errore);
             $this->_session_checker=false;
         }
         if($this->getUtenteRegistrato()==0){
@@ -167,7 +169,7 @@ class CRegistrazione {
         }
         else{
             $this->_avviso='You can\'t go to the login page if you are logged in!';
-            $VRegistrazione->impostaAvviso($this->_avviso);
+            $VRegistrazione->impostaDati('avviso',$this->_avviso);
             $VRegistrazione->setLayout('default');
         }
         return $VRegistrazione->processaTemplate();
@@ -184,7 +186,7 @@ class CRegistrazione {
         $session->cancella_valore('password');
         $VRegistrazione = USingleton::getInstance('VRegistrazione');
         $this->_avviso='Logged out correctly!';
-        $VRegistrazione->impostaAvviso($this->_avviso);
+        $VRegistrazione->impostaDati('avviso',$this->_avviso);
         $VRegistrazione->setLayout('default');
         return $VRegistrazione->processaTemplate();
     }
@@ -197,20 +199,20 @@ class CRegistrazione {
         $view = USingleton::getInstance('VRegistrazione');
         if($this->getUtenteRegistrato()){
             $this->_avviso='Logged in correctly!';
-            $view->impostaAvviso($this->_avviso);
-            $view->impostaLoggato(true);
+            $view->impostaDati('avviso',$this->_avviso);
+            $view->impostaDati('loggato',true);
             $view->setLayout('default');
             return $view->processaTemplate();
         }
         else if($this->getUtenteRegistrato()==false){
             $this->_errore='User and password dont match!';
-            $view->impostaErrore($this->_errore);
+            $view->impostaDati('errore',$this->_errore);
             $this->_errore='';
             $view->setLayout('problemi');
             $result=$view->processaTemplate();
             $view->setLayout('moduloLogin');
             $result.=$view->processaTemplate();
-            $view->impostaErrore('');
+            $view->impostaDati('errore','');
             return $result;
         }
     }
@@ -222,8 +224,8 @@ class CRegistrazione {
     public function goHome(){
         $view=new VRegistrazione();
         if($this->getUtenteRegistrato()){
-            $view->impostaAvviso('');
-            $view->impostaLoggato(true);
+            $view->impostaDati('avviso','');
+            $view->impostaDati('loggato',true);
             $view->setLayout('default');
             return $view->processaTemplate();
         }

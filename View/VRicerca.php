@@ -17,37 +17,6 @@ class VRicerca extends View {
         return $this->fetch('ricerca_'.$this->_layout.'.tpl');
     }
     /**
-     * Imposta l'eventuale errore nel template
-     *
-     * @param string $errore
-     */
-    public function impostaErrore($errore) {
-        $this->assign('errore',$errore);
-    }
-    /**
-     * Imposta la variabile commentato per il template
-     */
-    public function impostaCommentato(){
-        $this->assign('commentato',true);
-    }
-    /**
-     * Imposta l'username nel template
-     *
-     * @param string $user
-     */
-    public function impostaUsername($user){
-        $this->assign('user',$user);
-    }
-    /**
-     * Imposta i dati nel template identificati da una chiave ed il relativo valore
-     *
-     * @param string $key
-     * @param mixed $valore
-     */
-    public function impostaDati($key,$valore) {
-        $this->assign($key,$valore);
-    }
-    /**
      * Ritorna l'username contenuto nelle variabili di sessione
      *
      * @return mixed
@@ -115,22 +84,6 @@ class VRicerca extends View {
                 $dati[$dato]=$_REQUEST[$dato];
         }
         return $dati;
-    }
-    /**
-     * Imposta le avventure da mostrare nel template
-     *
-     * @param array $value
-     */
-    public function impostaAvventure($value){
-        $this->assign('_adventures_list',$value);
-    }
-    /**
-     * Imposta i commenti da mostrare nel template
-     *
-     * @param array $value
-     */
-    public function impostaCommenti($value){
-        $this->assign('_comments_list',$value);
     }
     /**
      * Imposta la media voti da mostrare nel template

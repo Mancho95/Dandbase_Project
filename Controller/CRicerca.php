@@ -31,7 +31,7 @@ class CRicerca {
         $param=$view->getDatiRicerca();
         $FAvventura = new FAvventura();
         $avventura=$FAvventura->loadRicerche($param);
-        $view->impostaAvventure($avventura);
+        $view->impostaDati('_adventures_list',$avventura);
         return $view->processaTemplate();
     }
     /**
@@ -41,8 +41,7 @@ class CRicerca {
      */
     public function show(){
         $view=USingleton::getInstance('VRicerca');
-        $view->impostaAdmin($_SESSION['username']);
-        $view->impostaUsername($_SESSION['username']);
+        $view->impostaDati('user',$view->getUsername());
         $view->setLayout('mostra');
         if($this->support==false)
             $param=$view->getDatiMostra();
@@ -54,32 +53,9 @@ class CRicerca {
         $FAvventura = new FAvventura();
         $avventura=$FAvventura->loadMostra($param);
         $commento=$FCommento->loadCommenti($param);
-        $view->impostaAvventure($avventura);
-        $view->impostaCommenti($commento);
+        $view->impostaDati('_adventures_list',$avventura);
+        $view->impostaDati('_comments_list',$commento);
         $var=false;
-        if($commento)
-            $var=$this->getUpvotePercentage($commento);
-        $view->impostaUpvote($var);
-        return $view->processaTemplate();
-    }
-    /**
-     * Carica il modulo di visualizzazione dell'avventura attuale dopo aver commentato
-     *
-     * @param string $support
-     * @return string
-     */
-    public function showaftercomment($support){
-        $view=USingleton::getInstance('VRicerca');
-        $view->impostaAdmin($_SESSION['username']);
-        $view->impostaUsername($_SESSION['username']);
-        $view->setLayout('mostra');
-        $param=$support;
-        $FCommento=new FCommento();
-        $FAvventura = new FAvventura();
-        $avventura=$FAvventura->loadMostra($param);
-        $commento=$FCommento->loadCommenti($param);
-        $view->impostaAvventure($avventura);
-        $view->impostaCommenti($commento);$var=false;
         if($commento)
             $var=$this->getUpvotePercentage($commento);
         $view->impostaUpvote($var);
@@ -115,7 +91,7 @@ class CRicerca {
                 $i++;
             }
             $this->support=$commento->cod_avventura;
-            $view->impostaErrore($this->_errore);
+            $view->impostaDati('errore',$this->_errore);
             $this->_errore='';
             return $this->show();
         } else {
@@ -150,16 +126,16 @@ class CRicerca {
     public function randomizeAdventure(){
         $view=USingleton::getInstance('VRicerca');
         $view->setLayout('mostra');
-        $view->impostaAdmin($_SESSION['username']);
-        $view->impostaUsername($_SESSION['username']);
+        $view->impostaDati('user',$view->getUsername());
         $FAvventura = new FAvventura();
         $FCommento = new FCommento();
         $avventura=$FAvventura->search();
         $n = array_rand($avventura, 1);
         $avventura2=$FAvventura->loadMostra($avventura[$n]->cod_avventura);
         $commento=$FCommento->loadCommenti($avventura[$n]->cod_avventura);
-        $view->impostaAvventure($avventura2);
-        $view->impostaCommenti($commento);$var=false;
+        $view->impostaDati('_adventures_list',$avventura2);
+        $view->impostaDati('_comments_list',$commento);
+        $var=false;
         if($commento)
             $var=$this->getUpvotePercentage($commento);
         $view->impostaUpvote($var);

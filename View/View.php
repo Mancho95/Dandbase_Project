@@ -18,12 +18,13 @@ class View extends Smarty {
         $this->caching = false;
     }
     /**
-     * Imposta la variabile smarty per l'amministratore
+     * Imposta i dati nel template identificati da una chiave ed il relativo valore
      *
-     * @param string $val
+     * @param string $key
+     * @param mixed $valore
      */
-    public function impostaAdmin($val){
-        $this->assign('admin',$val);
+    public function impostaDati($key,$val){
+        $this->assign($key,$val);
     }
 }
 ?>

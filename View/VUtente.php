@@ -9,12 +9,18 @@ class VUtente extends View {
      */
     private $_layout='default';
     /**
-     * @var array $_adventures_list
+     * restituisce la mail contenuta nelle variabili di Sessione
+     *
+     * @return mixed
      */
-    private $_adventures_list=array();
-
+    public function getEmail() {
+        if (isset($_SESSION['email']))
+            return $_SESSION['email'];
+        else
+            return false;
+    }
     /**
-     * restituisce la password passata tramite GET o POST
+     * restituisce la password contenuta nelle variabili di Sessione
      *
      * @return mixed
      */
@@ -25,13 +31,35 @@ class VUtente extends View {
             return false;
     }
     /**
-     * restituisce la username passata tramite GET o POST
+     * restituisce la username contenuta nelle variabili di Sessione
      *
      * @return mixed
      */
     public function getUsername() {
         if (isset($_SESSION['username']))
             return $_SESSION['username'];
+        else
+            return false;
+    }
+    /**
+     * restituisce il nome contenuto nelle variabili di Sessione
+     *
+     * @return mixed
+     */
+    public function getNome() {
+        if (isset($_SESSION['name']))
+            return $_SESSION['name'];
+        else
+            return false;
+    }
+    /**
+     * restituisce il cognome contenuto nelle variabili di Sessione
+     *
+     * @return mixed
+     */
+    public function getCognome() {
+        if (isset($_SESSION['surname']))
+            return $_SESSION['surname'];
         else
             return false;
     }
@@ -67,46 +95,12 @@ class VUtente extends View {
         return $contenuto;
     }
     /**
-     * Imposta l'eventuale errore nel template
-     *
-     * @param string $errore
-     */
-    public function impostaErrore($errore) {
-        $this->assign('errore',$errore);
-    }
-    /**
-     * Imposta il valore user nel template
-     *
-     * @param string $user
-     */
-    public function impostaUsername($user){
-        $this->assign('user',$user);
-    }
-    /**
      * imposta il layout
      *
      * @param string $layout
      */
     public function setLayout($layout) {
         $this->_layout=$layout;
-    }
-    /**
-     * Imposta i dati nel template identificati da una chiave ed il relativo valore
-     *
-     * @param string $key
-     * @param mixed $valore
-     */
-    public function impostaDati($key,$valore) {
-        $this->assign($key,$valore);
-    }
-    /**
-     * Imposta le avventure da mostrare nel template
-     *
-     * @param array $value
-     */
-    public function impostaAvventure($value){
-        $this->_adventures_list=$value;
-        $this->assign('_adventures_list',$this->_adventures_list);
     }
     /**
      * Restituisce l'array contenente i dati che andranno a sovrascrivere i vecchi

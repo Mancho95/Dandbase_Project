@@ -41,13 +41,13 @@ class CUpload {
             } else $this->_errore = 'There are some empty fields';
         }
         if (!$uploaded) {
-            $view->impostaErrore($this->_errore);
+            $view->impostaDati('errore',$this->_errore);
             $this->_errore='';
             $view->setLayout('problemi');
             $result=$view->processaTemplate();
             $view->setLayout('default');
             $result.=$view->processaTemplate();
-            $view->impostaErrore('');
+            $view->impostaDati('errore','');
             return $result;
         } else {
             $view->setLayout('conferma');
@@ -77,7 +77,7 @@ class CUpload {
         $FAvventura->delete($avventura[0]);
         $view2=USingleton::getInstance('VRegistrazione');
         $view2->setLayout('default');
-        $view2->impostaAvviso('Adventure deleted');
+        $view2->impostaDati('avviso','Adventure deleted');
         return $view2->processaTemplate();
     }
     /**
@@ -93,7 +93,7 @@ class CUpload {
         $FCommento->delete($commento[0]);
         $view2=USingleton::getInstance('VRegistrazione');
         $view2->setLayout('default');
-        $view2->impostaAvviso('Comment deleted');
+        $view2->impostaDati('avviso','Comment deleted');
         return $view2->processaTemplate();
     }
     /**

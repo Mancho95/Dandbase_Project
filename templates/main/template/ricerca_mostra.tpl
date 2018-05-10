@@ -14,7 +14,7 @@
                     <img src="adventuresmap/{$_adventures_list[0]->username}{$_adventures_list[0]->nome}" width="400" height="400" alt="" /></p>
                 <p align="center"><label for="username"><font size="6.5" color="#690813">Upvote Percentage:</font></label><br />
                     <font size="4.5" color="black">{$_upvote}</font></p>
-                {if $admin=='admin'}
+                {if $user=='admin'}
                 <form method="post" action="index.php" id="form">
                 <p><label for="username"><font size="4.5" color="black">Delete adventure:</font></label><br />
                     <p><input type="hidden" name="controller" value="upload" /></p>
@@ -38,7 +38,7 @@
                     {if $_comments_list[i]->upvote==false}
                     <p align="left"><img src="images/icon_dislike.png" width="32" height="32" alt="" /></p>
                     {/if}
-                    {if $admin=='admin'}
+                    {if $user=='admin'}
                         <form method="post" action="index.php" id="form">
                         <p><label for="username"><font size="4.5" color="black">Delete comment:</font></label><br />
                         <p><input type="hidden" name="controller" value="upload" /></p>

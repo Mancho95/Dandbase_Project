@@ -24,19 +24,15 @@ class CUtente {
     public function mostra() {
         $view = USingleton::getInstance('VUtente');
         if($this->_errore==true)
-           $view->impostaErrore($this->_errore);
-        $FUtente = new FUtente();
+           $view->impostaDati('errore',$this->_errore);
         $FAvventura = new FAvventura();
-        $utente = $FUtente->load($view->getUsername());
         $nomeutente=$view->getUsername();
         $view->setLayout('default');
-        $view->impostaDati('username', $utente->getUsername());
-        $view->impostaDati('password', $utente->getPassword());
-        $view->impostaDati('nome', $utente->getNome());
-        $view->impostaDati('cognome', $utente->getCognome());
-        $view->impostaDati('mail', $utente->getEmail());
+        $view->impostaDati('username', $view->getUsername());
+        $view->impostaDati('password', $view->getPassword());
+        $view->impostaDati('mail', $view->getEmail());
         $avventura=$FAvventura->loadAvventure($nomeutente);
-        $view->impostaAvventure($avventura);
+        $view->impostaDati('_adventures_list',$avventura);
         return $view->processaTemplate();
     }
     /**
@@ -50,13 +46,13 @@ class CUtente {
         if ($modifiche['old'] == $view->getPassword()){
             if ($modifiche['new'] == $modifiche['new_1']){
                 $FUtente = new FUtente();
-                $utente = $FUtente->load($view->getUsername());
+                //$utente = $FUtente->load($view->getUsername());
                 $user=USingleton::getInstance('EUtente');
-                $user->username=$utente->getUsername();
+                $user->username=$view->getUsername();
                 $user->password=$modifiche['new'];
-                $user->nome=$utente->getNome();
-                $user->cognome=$utente->getCognome();
-                $user->email=$utente->getEmail();
+                $user->nome=$view->getNome();
+                $user->cognome=$view->getCognome();
+                $user->email=$view->getEmail();
                 $FUtente->update($user);
             }
             else $this->_errore = 'Passwords dont match!';
@@ -64,15 +60,15 @@ class CUtente {
         else $this->_errore = 'Wrong password';
 
         if ($this->_errore != '') {
-            $view->impostaErrore($this->_errore);
+            $view->impostaDati('errore',$this->_errore);
             $this->_errore='';
             $view->setLayout('cambiopw');
             $result=$view->processaTemplate();
-            $view->impostaErrore('');
+            $view->impostaDati('errore','');
             return $result;
         }
         else {
-            $view->impostaErrore('Password changed correctly!');
+            $view->impostaDati('errore','Password changed correctly!');
             $this->mostra();
             $view->setLayout('default');
             return $view->processaTemplate();
@@ -88,27 +84,27 @@ class CUtente {
         $modifiche = $view->getModifiche();
         if ($modifiche['new'] == $modifiche['new_1']){
             $FUtente = new FUtente();
-            $utente = $FUtente->load($view->getUsername());
+            //$utente = $FUtente->load($view->getUsername());
             $user=USingleton::getInstance('EUtente');
-            $user->username=$utente->getUsername();
-            $user->password=$utente->getPassword();
-            $user->nome=$utente->getNome();
-            $user->cognome=$utente->getCognome();
+            $user->username=$view->getUsername();
+            $user->password=$view->getPassword();
+            $user->nome=$view->getNome();
+            $user->cognome=$view->getCognome();
             $user->email=$modifiche['new'];
             $FUtente->update($user);
         }
         else $this->_errore = 'Emails dont match!';
 
         if ($this->_errore != '') {
-            $view->impostaErrore($this->_errore);
+            $view->impostaDati('errore',$this->_errore);
             $this->_errore='';
             $view->setLayout('cambioem');
             $result=$view->processaTemplate();
-            $view->impostaErrore('');
+            $view->impostaDati('errore','');
             return $result;
         }
         else {
-            $view->impostaErrore('Email changed correctly!');
+            $view->impostaDati('errore','Email changed correctly!');
             $this->mostra();
             $view->setLayout('default');
             return $view->processaTemplate();
@@ -121,7 +117,7 @@ class CUtente {
      */
     public function profilepic() {
         $VUtente = USingleton::getInstance('VUtente');
-        $VUtente->impostaDati('username', $_SESSION['username']);
+        $VUtente->impostaDati('username', $VUtente->getUsername());
         $VUtente->setLayout('uploadimg');
         return $VUtente->processaTemplate();
     }
