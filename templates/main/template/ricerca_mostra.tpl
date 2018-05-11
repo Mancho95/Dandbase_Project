@@ -1,9 +1,6 @@
 <div id="staff" class="container">
     <div class="title">
         <b><a color="#690813">{$errore}</a></b>
-        {if $commentato==true}
-            <b><a color="#690813">Your comment was uploaded correctly!</a></b>
-        {/if}
         <span><font color="#690813" size="6.5"><b>{$_adventures_list[0]->nome}</b></font></span>
         <b><fieldset class="bordo">
                 <p align="center"><label for="username"><font size="6.5" color="#690813">Creator:</font></label><br />

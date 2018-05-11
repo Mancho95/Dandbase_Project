@@ -20,6 +20,9 @@ class CRicerca {
         $view->setLayout('default');
         return $view->processaTemplate();
         }
+    public function impostaSupport($support){
+        $this->support=$support;
+    }
     /**
      * Carica il modulo di visualizzazione dei risultati della ricerca di un avventura
      *
@@ -81,7 +84,7 @@ class CRicerca {
             }
             $FCommento->store($commento);
             $uploaded = true;
-            $view->impostaCommentato();
+            $view->impostaDati('errore','Your comment was uploaded correctly!');
         }
         else $this->_errore='There are some empty fields, comment not uploaded';
         $this->support=$commento->cod_avventura;

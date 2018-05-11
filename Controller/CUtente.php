@@ -46,7 +46,6 @@ class CUtente {
         if ($modifiche['old'] == $view->getPassword()){
             if ($modifiche['new'] == $modifiche['new_1']){
                 $FUtente = new FUtente();
-                //$utente = $FUtente->load($view->getUsername());
                 $user=USingleton::getInstance('EUtente');
                 $user->username=$view->getUsername();
                 $user->password=$modifiche['new'];
@@ -84,7 +83,6 @@ class CUtente {
         $modifiche = $view->getModifiche();
         if ($modifiche['new'] == $modifiche['new_1']){
             $FUtente = new FUtente();
-            //$utente = $FUtente->load($view->getUsername());
             $user=USingleton::getInstance('EUtente');
             $user->username=$view->getUsername();
             $user->password=$view->getPassword();
