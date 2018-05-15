@@ -5,6 +5,7 @@ var searchData=
   ['impostadati',['impostaDati',['../class_view.html#af9fd6b248a5a2baefff04116e90e50ac',1,'View']]],
   ['impostapagina',['impostaPagina',['../class_c_home.html#ac911ed43be450d553e5cc4e86a9d98e5',1,'CHome']]],
   ['impostapaginaregistrato',['impostaPaginaRegistrato',['../class_v_home.html#ace9a51c09e9346c6e508d5f67c8ba6d0',1,'VHome']]],
+  ['impostasupport',['impostaSupport',['../class_c_ricerca.html#a08fab74f09629da7944d8fb462db99f2',1,'CRicerca']]],
   ['impostaupvote',['impostaUpvote',['../class_v_ricerca.html#a30341bd57866dd8155655fa8b64ed74c',1,'VRicerca']]],
   ['is_5fcached',['is_cached',['../class_smarty.html#a5f01eb89f03adcf0c9538567393f3226',1,'Smarty']]]
 ];

@@ -23,7 +23,7 @@ for the JavaScript code in this file
 */
 var NAVTREE =
 [
-  [ "Dandbase_Project", "index.html", [
+  [ "Dandbase", "index.html", [
     [ "README", "md__f_1__dandbase__project__r_e_a_d_m_e.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ]
