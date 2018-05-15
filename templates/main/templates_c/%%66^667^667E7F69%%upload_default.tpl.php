@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-08 23:42:29
+<?php /* Smarty version 2.6.26, created on 2018-05-15 14:54:04
          compiled from upload_default.tpl */ ?>
 <div id="staff" class="container">
     <div class="title">
         <span><b><h2>Enter your adventure details</h2></b></span>
-        <form enctype="multipart/form-data" id="form" action="index.php" method="POST">
+        <form enctype="multipart/form-data" id="form" action="" method="POST">
             <b><fieldset class="bordo">
                     <input type="hidden" name="username" value="<?php echo $this->_tpl_vars['nick']; ?>
 " tabindex="1" />

@@ -8,7 +8,9 @@ class CRicerca {
      * @var string $_errore
      */
     private $_errore = '';
-
+    /**
+     * @var string $support
+     */
     private $support='';
     /**
      * Carica il modulo di ricerca di un avventura
@@ -20,6 +22,11 @@ class CRicerca {
         $view->setLayout('default');
         return $view->processaTemplate();
         }
+    /**
+     * Serve per impostare il valore support  utile a ricaricare l'avventura commentata
+     *
+     * @param $support
+     */
     public function impostaSupport($support){
         $this->support=$support;
     }

@@ -1,6 +1,6 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-08 21:53:36
+<?php /* Smarty version 2.6.26, created on 2018-05-14 19:01:34
          compiled from utente_default.tpl */ ?>
-<form method="post" action="index.php">
+<form method="post" action="">
 <div id="staff" class="container">
     <div class="title">
         <b><a color="#690813"><?php echo $this->_tpl_vars['errore']; ?>
@@ -12,8 +12,8 @@
 </font></p>
             <p><font size="2.5" color="black">&nbsp&nbsp&nbsp&nbsp Your e-mail: <?php echo $this->_tpl_vars['mail']; ?>
 </font></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changeimg" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=upload&task=modulo" class="button"> Upload Adventure</a></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changeem" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changepw" class="button"> Change password &nbsp</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="Changepic" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Upload" class="button"> Upload Adventure</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="Changemail" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Changepass" class="button"> Change password &nbsp</a></p>
         </fieldset></b>
         <?php if ($this->_tpl_vars['_adventures_list'] != 0): ?>
         <p><input type="hidden" name="controller" value="ricerca" /></p>

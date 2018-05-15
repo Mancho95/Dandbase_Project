@@ -25,7 +25,7 @@ class VHome extends View {
      * aggiunge il tasto per il login nel menu (per gli utenti non autenticati)
      */
     public function aggiungiTastoLogin() {
-        $tasto_registrazione = array('testo' => 'Sign In', 'link' => '?controller=registrazione&task=login');
+        $tasto_registrazione = array('testo' => 'Sign In', 'link' => 'Login');
         $this->_top_button[] = $tasto_registrazione;
     }
     /**
@@ -86,21 +86,21 @@ class VHome extends View {
      * aggiunge il tasto logout al menu (per gli utenti autenticati)
      */
     public function aggiungiTastoLogout() {
-        $tasto_logout=array('testo' => 'Logout', 'link' => '?controller=registrazione&task=esci');
+        $tasto_logout=array('testo' => 'Logout', 'link' => 'Logout');
         $this->_top_button[]=$tasto_logout;
     }
     /**
      * aggiunge il tasto per la registrazione nel menu (per gli utenti non autenticati)
      */
     public function aggiungiTastoRegistrazione() {
-        $tasto_registrazione = array('testo' => 'Sign Up', 'link' => '?controller=registrazione&task=registra');
+        $tasto_registrazione = array('testo' => 'Sign Up', 'link' => 'Register');
         $this->_top_button[] = $tasto_registrazione;
     }
     /**
      * aggiunge il tasto per la ricerca
      */
     public function aggiungiTastoSearch() {
-        $tasto_boxmail = array('testo' => 'Search adventure', 'link' => '?controller=ricerca&task=modulo');
+        $tasto_boxmail = array('testo' => 'Search adventure', 'link' => 'Search');
         $this->_top_button[] = $tasto_boxmail;
 
     }
@@ -108,7 +108,7 @@ class VHome extends View {
      * aggiunge il tasto per visualizzare il profilo (per gli utenti autenticati)
      */
     public function aggiungiTastoProfilo() {
-        $tasto_profilo = array('testo' => 'Profile', 'link' => '?controller=profile&task=mostra');
+        $tasto_profilo = array('testo' => 'Profile', 'link' => 'Profile');
         $this->_top_button[] = $tasto_profilo;
 
     }
@@ -116,7 +116,7 @@ class VHome extends View {
      * aggiunge il tasto per andare sul modulo di upload (per gli utenti autenticati)
      */
     public function aggiungiTastoUpload() {
-        $tasto_mieiannunci = array('testo' => 'Upload adventure', 'link' => '?controller=upload&task=modulo');
+        $tasto_mieiannunci = array('testo' => 'Upload adventure', 'link' => 'Upload');
         $this->_top_button[] = $tasto_mieiannunci;
 
     }
@@ -124,7 +124,7 @@ class VHome extends View {
      * aggiunge il tasto per contattare l'admin
      */
     public function aggiungiTastoContact() {
-        $tasto_mieiannunci = array('testo' => 'Contact Us', 'link' => '?controller=registrazione&task=contatta');
+        $tasto_mieiannunci = array('testo' => 'Contact Us', 'link' => 'ContactUs');
         $this->_top_button[] = $tasto_mieiannunci;
 
     }
@@ -132,7 +132,7 @@ class VHome extends View {
      * aggiunge il tasto per l'homepage (per gli utenti non autenticati)
      */
     public function aggiungiTastoHomepage() {
-        $tasto_mieiannunci = array('testo' => 'Homepage', 'link' => '.');
+        $tasto_mieiannunci = array('testo' => 'Homepage', 'link' => 'Homepage');
         $this->_top_button[] = $tasto_mieiannunci;
 
     }

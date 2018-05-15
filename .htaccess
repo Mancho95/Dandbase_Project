@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteRule ^Homepage$ index.php
+RewriteRule ^Search$ ?controller=ricerca&task=modulo
+RewriteRule ^Profile$ ?controller=profile&task=mostra
+RewriteRule ^Upload$ ?controller=upload&task=modulo
+RewriteRule ^ContactUs$ ?controller=registrazione&task=contatta
+RewriteRule ^Register$ ?controller=registrazione&task=registra
+RewriteRule ^Logout$ ?controller=registrazione&task=esci
+RewriteRule ^Login$ ?controller=registrazione&task=login
+RewriteRule ^FAQ$ ?controller=registrazione&task=faq
+RewriteRule ^RandomAdventure$ ?controller=ricerca&task=random
+RewriteRule ^Changepic$ ?controller=profile&task=changeimg
+RewriteRule ^Changemail$ ?controller=profile&task=changeem
+RewriteRule ^Changepass$ ?controller=profile&task=changepw
+RewriteRule ^Results$ index.php
+RewriteRule ^ShowAdventure$ index.php
+RewriteRule ^CommentDeleted$ index.php
+RewriteRule ^AdventureDeleted$ index.php

@@ -23,7 +23,7 @@
             <p><input type="submit" name="submit" id="submit_1" class="button" value=" Sign up" tabindex="15" /></p>
             </fieldset></b>
         <span><font color="#690813" size="4.5"><b>Already have an account?</b></font></span>
-        <p><a href="?controller=registrazione&task=login" class="button"> Sign In</a></p>
+        <p><a href="Login" class="button"> Sign In</a></p>
     </form>
 </div>
 </div>

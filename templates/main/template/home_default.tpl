@@ -28,7 +28,7 @@ Released   : 20140131
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="." color="000000">DnBase <br><font size="2">{$content_title}!</font></a></br></h1>
+			<h1><a href="Homepage" color="000000">DnBase <br><font size="2">{$content_title}!</font></a></br></h1>
 		</div>
 		<div id="menu">
 			<ul>

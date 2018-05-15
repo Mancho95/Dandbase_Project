@@ -1,7 +1,7 @@
 <div id="staff" class="container">
     <div class="title">
         <span><b><h2>Enter your adventure details</h2></b></span>
-        <form enctype="multipart/form-data" id="form" action="index.php" method="POST">
+        <form enctype="multipart/form-data" id="form" action="" method="POST">
             <b><fieldset class="bordo">
                     <input type="hidden" name="username" value="{$nick}" tabindex="1" />
                     <p><label for="name" class="left">Adventure Name:</label>

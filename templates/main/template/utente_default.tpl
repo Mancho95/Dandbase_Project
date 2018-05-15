@@ -1,4 +1,4 @@
-<form method="post" action="index.php">
+<form method="post" action="">
 <div id="staff" class="container">
     <div class="title">
         <b><a color="#690813">{$errore}</a></b>
@@ -6,8 +6,8 @@
             <p style="float: left;"><img src="profileimages/{$username}" width="250" height="250" alt="" /></p>
             <p><font size="6.5" color="#690813">&nbsp {$username}</font></p>
             <p><font size="2.5" color="black">&nbsp&nbsp&nbsp&nbsp Your e-mail: {$mail}</font></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changeimg" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=upload&task=modulo" class="button"> Upload Adventure</a></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changeem" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="?controller=profile&task=changepw" class="button"> Change password &nbsp</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="Changepic" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Upload" class="button"> Upload Adventure</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="Changemail" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Changepass" class="button"> Change password &nbsp</a></p>
         </fieldset></b>
         {if $_adventures_list!=0}
         <p><input type="hidden" name="controller" value="ricerca" /></p>

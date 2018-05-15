@@ -1,0 +1,171 @@
+\hypertarget{class_c_registrazione}{}\section{C\+Registrazione Class Reference}
+\label{class_c_registrazione}\index{C\+Registrazione@{C\+Registrazione}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_registrazione_ab0cf6298bf4374f5eaf9ee6b08d4c975}{get\+Utente\+Registrato}} ()
+\item 
+\mbox{\hyperlink{class_c_registrazione_ae5ba060ec4288c5b3a6060db64300201}{autentica}} (\$username, \$password)
+\item 
+\mbox{\hyperlink{class_c_registrazione_a6774502b5cf78e810735a88e9f4b7127}{crea\+Utente}} ()
+\item 
+\mbox{\hyperlink{class_c_registrazione_a95fb25c8c8477504e3bb4f684691a31c}{modulo\+Registrazione}} ()
+\item 
+\mbox{\hyperlink{class_c_registrazione_a45538c1ae0a7b43b28341e95bdf2fea1}{modulo\+F\+AQ}} ()
+\item 
+\mbox{\hyperlink{class_c_registrazione_a915ca538df41be1b1ec64476d35cef91}{modulocontatta}} ()
+\item 
+\mbox{\hyperlink{class_c_registrazione_a16420af27b3863dacf52df64aa28b59f}{modulo\+Login}} ()
+\item 
+\mbox{\hyperlink{class_c_registrazione_a32d91897b6558bf53694479719b99195}{logout}} ()
+\item 
+\mbox{\hyperlink{class_c_registrazione_aaf2b63786c125112efbb374fd6e102ba}{reindirizza}} ()
+\item 
+\mbox{\hyperlink{class_c_registrazione_a314d300147605fbd772a5f9ca22d4c35}{go\+Home}} ()
+\item 
+\mbox{\hyperlink{class_c_registrazione_a499d6dfd36434599a9d2642c47ab4dcf}{set\+Session\+Expired}} ()
+\item 
+\mbox{\hyperlink{class_c_registrazione_a6f90c5c3fdb0f0dde421f89172f4bdd0}{smista}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_registrazione_ae5ba060ec4288c5b3a6060db64300201}\label{class_c_registrazione_ae5ba060ec4288c5b3a6060db64300201}} 
+\index{C\+Registrazione@{C\+Registrazione}!autentica@{autentica}}
+\index{autentica@{autentica}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{autentica()}{autentica()}}
+{\footnotesize\ttfamily C\+Registrazione\+::autentica (\begin{DoxyParamCaption}\item[{}]{\$username,  }\item[{}]{\$password }\end{DoxyParamCaption})}
+
+Controlla se una coppia username e password corrispondono ad un utente registrato ed in tal caso impostano le variabili di sessione relative all\textquotesingle{}autenticazione
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$username} & \\
+\hline
+string & {\em \$password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_registrazione_a6774502b5cf78e810735a88e9f4b7127}\label{class_c_registrazione_a6774502b5cf78e810735a88e9f4b7127}} 
+\index{C\+Registrazione@{C\+Registrazione}!crea\+Utente@{crea\+Utente}}
+\index{crea\+Utente@{crea\+Utente}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{crea\+Utente()}{creaUtente()}}
+{\footnotesize\ttfamily C\+Registrazione\+::crea\+Utente (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Crea un utente sul database controllando che non esista già
+
+\begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_registrazione_ab0cf6298bf4374f5eaf9ee6b08d4c975}\label{class_c_registrazione_ab0cf6298bf4374f5eaf9ee6b08d4c975}} 
+\index{C\+Registrazione@{C\+Registrazione}!get\+Utente\+Registrato@{get\+Utente\+Registrato}}
+\index{get\+Utente\+Registrato@{get\+Utente\+Registrato}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{get\+Utente\+Registrato()}{getUtenteRegistrato()}}
+{\footnotesize\ttfamily C\+Registrazione\+::get\+Utente\+Registrato (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Controlla se l\textquotesingle{}utente è registrato ed autenticato
+
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_registrazione_a314d300147605fbd772a5f9ca22d4c35}\label{class_c_registrazione_a314d300147605fbd772a5f9ca22d4c35}} 
+\index{C\+Registrazione@{C\+Registrazione}!go\+Home@{go\+Home}}
+\index{go\+Home@{go\+Home}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{go\+Home()}{goHome()}}
+{\footnotesize\ttfamily C\+Registrazione\+::go\+Home (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reindirizza alla home quando viene cliccato un tasto che porta alla homepage
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_registrazione_a32d91897b6558bf53694479719b99195}\label{class_c_registrazione_a32d91897b6558bf53694479719b99195}} 
+\index{C\+Registrazione@{C\+Registrazione}!logout@{logout}}
+\index{logout@{logout}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{logout()}{logout()}}
+{\footnotesize\ttfamily C\+Registrazione\+::logout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Effettua il logout
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_registrazione_a915ca538df41be1b1ec64476d35cef91}\label{class_c_registrazione_a915ca538df41be1b1ec64476d35cef91}} 
+\index{C\+Registrazione@{C\+Registrazione}!modulocontatta@{modulocontatta}}
+\index{modulocontatta@{modulocontatta}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{modulocontatta()}{modulocontatta()}}
+{\footnotesize\ttfamily C\+Registrazione\+::modulocontatta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Mostra la pagina per contattare l\textquotesingle{}amministratore
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_registrazione_a45538c1ae0a7b43b28341e95bdf2fea1}\label{class_c_registrazione_a45538c1ae0a7b43b28341e95bdf2fea1}} 
+\index{C\+Registrazione@{C\+Registrazione}!modulo\+F\+AQ@{modulo\+F\+AQ}}
+\index{modulo\+F\+AQ@{modulo\+F\+AQ}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{modulo\+F\+A\+Q()}{moduloFAQ()}}
+{\footnotesize\ttfamily C\+Registrazione\+::modulo\+F\+AQ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Mostra la pagina delle Frequently Asked Questions
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_registrazione_a16420af27b3863dacf52df64aa28b59f}\label{class_c_registrazione_a16420af27b3863dacf52df64aa28b59f}} 
+\index{C\+Registrazione@{C\+Registrazione}!modulo\+Login@{modulo\+Login}}
+\index{modulo\+Login@{modulo\+Login}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{modulo\+Login()}{moduloLogin()}}
+{\footnotesize\ttfamily C\+Registrazione\+::modulo\+Login (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Mostra il modulo di login
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_registrazione_a95fb25c8c8477504e3bb4f684691a31c}\label{class_c_registrazione_a95fb25c8c8477504e3bb4f684691a31c}} 
+\index{C\+Registrazione@{C\+Registrazione}!modulo\+Registrazione@{modulo\+Registrazione}}
+\index{modulo\+Registrazione@{modulo\+Registrazione}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{modulo\+Registrazione()}{moduloRegistrazione()}}
+{\footnotesize\ttfamily C\+Registrazione\+::modulo\+Registrazione (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Mostra il modulo di registrazione
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_registrazione_aaf2b63786c125112efbb374fd6e102ba}\label{class_c_registrazione_aaf2b63786c125112efbb374fd6e102ba}} 
+\index{C\+Registrazione@{C\+Registrazione}!reindirizza@{reindirizza}}
+\index{reindirizza@{reindirizza}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{reindirizza()}{reindirizza()}}
+{\footnotesize\ttfamily C\+Registrazione\+::reindirizza (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reindirizza alla home dopo il login
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_registrazione_a499d6dfd36434599a9d2642c47ab4dcf}\label{class_c_registrazione_a499d6dfd36434599a9d2642c47ab4dcf}} 
+\index{C\+Registrazione@{C\+Registrazione}!set\+Session\+Expired@{set\+Session\+Expired}}
+\index{set\+Session\+Expired@{set\+Session\+Expired}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{set\+Session\+Expired()}{setSessionExpired()}}
+{\footnotesize\ttfamily C\+Registrazione\+::set\+Session\+Expired (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Set della variabile \+\_\+session\+\_\+checker che serve a controllare se la sessione è scaduta \mbox{\Hypertarget{class_c_registrazione_a6f90c5c3fdb0f0dde421f89172f4bdd0}\label{class_c_registrazione_a6f90c5c3fdb0f0dde421f89172f4bdd0}} 
+\index{C\+Registrazione@{C\+Registrazione}!smista@{smista}}
+\index{smista@{smista}!C\+Registrazione@{C\+Registrazione}}
+\subsubsection{\texorpdfstring{smista()}{smista()}}
+{\footnotesize\ttfamily C\+Registrazione\+::smista (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Smista le richieste ai relativi metodi della classe
+
+\begin{DoxyReturn}{Returns}
+mixed 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/\+Dandbase\+\_\+\+Project/\+Controller/C\+Registrazione.\+php\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-09 14:20:44
+<?php /* Smarty version 2.6.26, created on 2018-05-14 12:53:22
          compiled from home_default.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
@@ -30,7 +30,7 @@ Released   : 20140131
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="." color="000000">DnBase <br><font size="2"><?php echo $this->_tpl_vars['content_title']; ?>
+			<h1><a href="Homepage" color="000000">DnBase <br><font size="2"><?php echo $this->_tpl_vars['content_title']; ?>
 !</font></a></br></h1>
 		</div>
 		<div id="menu">

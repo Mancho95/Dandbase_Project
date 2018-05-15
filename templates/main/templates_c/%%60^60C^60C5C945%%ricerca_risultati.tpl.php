@@ -1,6 +1,6 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-04 19:26:11
+<?php /* Smarty version 2.6.26, created on 2018-05-15 14:16:51
          compiled from ricerca_risultati.tpl */ ?>
-<form method="post" action="index.php">
+<form method="post" action="ShowAdventure">
 <div id="staff" class="container">
     <div class="title">
         <p><input type="hidden" name="controller" value="ricerca" /></p>
@@ -38,7 +38,7 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
 ?>
                     <p class="unicaRiga">
                         <span class="margine_d"><button type="submit" name="cod_avventura" value="<?php echo $this->_tpl_vars['_adventures_list'][$this->_sections['i']['index']]->cod_avventura; ?>
-" class="button">Open</button></span>
+"  class="button">Open</button></span>
                         <span class="margine_d2"><font size="4.5" color="black"><?php echo $this->_tpl_vars['_adventures_list'][$this->_sections['i']['index']]->versione; ?>
 </font></span>
                         <span class="centrato"><font size="4.5" color="black"><?php echo $this->_tpl_vars['_adventures_list'][$this->_sections['i']['index']]->nome; ?>

@@ -13,9 +13,9 @@
                     <p><input type="submit" class="button" value="LOGIN"  /></p>
                 </fieldset></b>
             <span><font color="#690813" size="4.5"><b>Don't have an account?</b></font></span>
-            <p><a href="?controller=registrazione&task=registra" class="button"> Sign Up</a></p>
+            <p><a href="Register" class="button"> Sign Up</a></p>
             <span><font color="#690813" size="4.5"><b>Do you need some help?</b></font></span>
-            <p><a href="?controller=registrazione&amp;task=faq" class="button"> Read FAQs</a> or <a href="#" class="button"> Contact us!</a></div></p>
+            <p><a href="FAQ" class="button"> Read FAQs</a> or <a href="#" class="button"> Contact us!</a></div></p>
     </div>
     </div>
 </form>

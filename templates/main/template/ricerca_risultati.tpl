@@ -1,4 +1,4 @@
-<form method="post" action="index.php">
+<form method="post" action="ShowAdventure">
 <div id="staff" class="container">
     <div class="title">
         <p><input type="hidden" name="controller" value="ricerca" /></p>
@@ -12,7 +12,7 @@
                 </p>
                 {section name=i loop=$_adventures_list}
                     <p class="unicaRiga">
-                        <span class="margine_d"><button type="submit" name="cod_avventura" value="{$_adventures_list[i]->cod_avventura}" class="button">Open</button></span>
+                        <span class="margine_d"><button type="submit" name="cod_avventura" value="{$_adventures_list[i]->cod_avventura}"  class="button">Open</button></span>
                         <span class="margine_d2"><font size="4.5" color="black">{$_adventures_list[i]->versione}</font></span>
                         <span class="centrato"><font size="4.5" color="black">{$_adventures_list[i]->nome}</font></span>
                     </p>

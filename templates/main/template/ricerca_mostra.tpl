@@ -12,7 +12,7 @@
                 <p align="center"><label for="username"><font size="6.5" color="#690813">Upvote Percentage:</font></label><br />
                     <font size="4.5" color="black">{$_upvote}</font></p>
                 {if $user=='admin'}
-                <form method="post" action="index.php" id="form">
+                <form method="post" action="AdventureDeleted" id="form">
                 <p><label for="username"><font size="4.5" color="black">Delete adventure:</font></label><br />
                     <p><input type="hidden" name="controller" value="upload" /></p>
                     <p><input type="hidden" name="task" value="deletea" /></p>
@@ -36,7 +36,7 @@
                     <p align="left"><img src="images/icon_dislike.png" width="32" height="32" alt="" /></p>
                     {/if}
                     {if $user=='admin'}
-                        <form method="post" action="index.php" id="form">
+                        <form method="post" action="CommentDeleted" id="form">
                         <p><label for="username"><font size="4.5" color="black">Delete comment:</font></label><br />
                         <p><input type="hidden" name="controller" value="upload" /></p>
                         <p><input type="hidden" name="task" value="deletec" /></p>
@@ -51,7 +51,7 @@
                 </fieldset></b>
         {/if}
         {if $user==true}
-        <form method="post" action="index.php" id="form">
+        <form method="post" id="form">
             <b><fieldset class="bordo"><legend>&nbsp;Add a comment</legend>
                     <p><input type="hidden" name="controller" value="ricerca" /></p>
                     <p><input type="hidden" name="task" value="commenta" /></p>
@@ -67,6 +67,6 @@
         </form>
         {/if}
         </br>
-        <p><a href="?controller=ricerca&task=modulo" class="button"> Search again</a>{if $user==true} or <a href="?controller=profile&task=mostra" class="button"> Go to your profile</a>{/if}</p>
+        <p><a href="Search" class="button"> Search again</a>{if $user==true} or <a href="Profile" class="button"> Go to your profile</a>{/if}</p>
     </div>
 </div>

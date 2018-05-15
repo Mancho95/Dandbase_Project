@@ -63,10 +63,13 @@ class CRegistrazione {
                 $session->imposta_valore('timeout',time());
                 return true;
             }
-            else $this->_errore='Username o password errati';
+            else{
+                $this->_errore='Username o password errati';
+            }
         }
-        else $this->_errore='L\'account non esiste';
-
+        else {
+            $this->_errore = 'L\'account non esiste';
+        }
         return false;
     }
     /**

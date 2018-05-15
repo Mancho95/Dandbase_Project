@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-08 13:49:42
+<?php /* Smarty version 2.6.26, created on 2018-05-14 13:04:36
          compiled from registrazione_registrazione.tpl */ ?>
 <div id="staff" class="container">
 <div class="title">
@@ -25,7 +25,7 @@
             <p><input type="submit" name="submit" id="submit_1" class="button" value=" Sign up" tabindex="15" /></p>
             </fieldset></b>
         <span><font color="#690813" size="4.5"><b>Already have an account?</b></font></span>
-        <p><a href="?controller=registrazione&task=login" class="button"> Sign In</a></p>
+        <p><a href="Login" class="button"> Sign In</a></p>
     </form>
 </div>
 </div>

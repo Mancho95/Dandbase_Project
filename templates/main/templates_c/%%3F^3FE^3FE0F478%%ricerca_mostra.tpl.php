@@ -1,12 +1,9 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-10 19:36:05
+<?php /* Smarty version 2.6.26, created on 2018-05-15 14:29:15
          compiled from ricerca_mostra.tpl */ ?>
 <div id="staff" class="container">
     <div class="title">
         <b><a color="#690813"><?php echo $this->_tpl_vars['errore']; ?>
 </a></b>
-        <?php if ($this->_tpl_vars['commentato'] == true): ?>
-            <b><a color="#690813">Your comment was uploaded correctly!</a></b>
-        <?php endif; ?>
         <span><font color="#690813" size="6.5"><b><?php echo $this->_tpl_vars['_adventures_list'][0]->nome; ?>
 </b></font></span>
         <b><fieldset class="bordo">
@@ -24,7 +21,7 @@
                     <font size="4.5" color="black"><?php echo $this->_tpl_vars['_upvote']; ?>
 </font></p>
                 <?php if ($this->_tpl_vars['user'] == 'admin'): ?>
-                <form method="post" action="index.php" id="form">
+                <form method="post" action="AdventureDeleted" id="form">
                 <p><label for="username"><font size="4.5" color="black">Delete adventure:</font></label><br />
                     <p><input type="hidden" name="controller" value="upload" /></p>
                     <p><input type="hidden" name="task" value="deletea" /></p>
@@ -75,7 +72,7 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
                     <p align="left"><img src="images/icon_dislike.png" width="32" height="32" alt="" /></p>
                     <?php endif; ?>
                     <?php if ($this->_tpl_vars['user'] == 'admin'): ?>
-                        <form method="post" action="index.php" id="form">
+                        <form method="post" action="CommentDeleted" id="form">
                         <p><label for="username"><font size="4.5" color="black">Delete comment:</font></label><br />
                         <p><input type="hidden" name="controller" value="upload" /></p>
                         <p><input type="hidden" name="task" value="deletec" /></p>
@@ -91,7 +88,7 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
                 </fieldset></b>
         <?php endif; ?>
         <?php if ($this->_tpl_vars['user'] == true): ?>
-        <form method="post" action="index.php" id="form">
+        <form method="post" id="form">
             <b><fieldset class="bordo"><legend>&nbsp;Add a comment</legend>
                     <p><input type="hidden" name="controller" value="ricerca" /></p>
                     <p><input type="hidden" name="task" value="commenta" /></p>
@@ -109,6 +106,6 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
         </form>
         <?php endif; ?>
         </br>
-        <p><a href="?controller=ricerca&task=modulo" class="button"> Search again</a><?php if ($this->_tpl_vars['user'] == true): ?> or <a href="?controller=profile&task=mostra" class="button"> Go to your profile</a><?php endif; ?></p>
+        <p><a href="Search" class="button"> Search again</a><?php if ($this->_tpl_vars['user'] == true): ?> or <a href="Profile" class="button"> Go to your profile</a><?php endif; ?></p>
     </div>
 </div>
