@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-15 14:29:15
+<?php /* Smarty version 2.6.26, created on 2018-05-29 18:21:22
          compiled from ricerca_mostra.tpl */ ?>
 <div id="staff" class="container">
     <div class="title">
@@ -14,8 +14,8 @@
                 <td style="width:606px;text-align:left;vertical-align:top;white-space:wrap;"><font size="4.5" color="black"><?php echo $this->_tpl_vars['_adventures_list'][0]->descrizione; ?>
 </font></td></p>
                 <p align="center"><label for="username"><font size="6.5" color="#690813">Map:</font></label><br />
-                    <img src="adventuresmap/<?php echo $this->_tpl_vars['_adventures_list'][0]->username; ?>
-<?php echo $this->_tpl_vars['_adventures_list'][0]->nome; ?>
+                    <img src="data:image/<?php echo $this->_tpl_vars['_adventures_list'][0]->pictype; ?>
+;base64,<?php echo $this->_tpl_vars['_adventures_list'][0]->advpic; ?>
 " width="400" height="400" alt="" /></p>
                 <p align="center"><label for="username"><font size="6.5" color="#690813">Upvote Percentage:</font></label><br />
                     <font size="4.5" color="black"><?php echo $this->_tpl_vars['_upvote']; ?>
@@ -60,7 +60,8 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
                 <fieldset class="bordo">
                 <p align="left"><label for="username"><font size="4.5" color="#690813"><?php echo $this->_tpl_vars['_comments_list'][$this->_sections['i']['index']]->username; ?>
 :</font></label><br />
-                    <p style="float: left;"><img src="profileimages/<?php echo $this->_tpl_vars['_comments_list'][$this->_sections['i']['index']]->username; ?>
+                    <p style="float: left;"><img src="data:image/<?php echo $this->_tpl_vars['_comments_list'][$this->_sections['i']['index']]->pictype; ?>
+;base64,<?php echo $this->_tpl_vars['_comments_list'][$this->_sections['i']['index']]->propic; ?>
 " width="100" height="100" alt="" />&nbsp&nbsp&nbsp</p>
                     <fieldset class="bordo">
                     <td style="width:606px;text-align:left;vertical-align:top;white-space:wrap;"><font size="2.5" color="black"><?php echo $this->_tpl_vars['_comments_list'][$this->_sections['i']['index']]->testo; ?>
@@ -93,8 +94,6 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
                     <p><input type="hidden" name="controller" value="ricerca" /></p>
                     <p><input type="hidden" name="task" value="commenta" /></p>
                     <p><input type="hidden" name="cod_avventura" value="<?php echo $this->_tpl_vars['_adventures_list'][0]->cod_avventura; ?>
-" /></p>
-                    <p><input type="hidden" name="username" value="<?php echo $this->_tpl_vars['user']; ?>
 " /></p>
                     <p><label for="testo" class="left">Your comment:</label>
                         <textarea name="testo" id="testo" cols="30" rows="10"/></textarea></p>

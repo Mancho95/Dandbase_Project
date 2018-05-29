@@ -71,6 +71,20 @@ class VUpload extends View {
         $this->_layout=$layout;
     }
     /**
+     * Prende i valori contenuti nella variabile superglobale $_FILES e li inserisce in un array
+     *
+     * @return mixed
+     */
+    public function getPic() {
+        $dati_richiesti=array('tmp_name', 'type');
+        $dati=array();
+        foreach ($dati_richiesti as $dato) {
+            if (isset($_FILES['advpic'][$dato]))
+                $dati[$dato]=$_FILES['advpic'][$dato];
+        }
+        return $dati;
+    }
+    /**
      * Restituisce l'array contenente i dati dell'avventura
      *
      * @return array();
@@ -81,6 +95,8 @@ class VUpload extends View {
         foreach ($dati_richiesti as $dato) {
             if (isset($_REQUEST[$dato]))
                 $dati[$dato]=$_REQUEST[$dato];
+            if(isset($_SESSION[$dato])&&$dato!='nome')
+                $dati[$dato]=$_SESSION[$dato];
         }
         return $dati;
     }

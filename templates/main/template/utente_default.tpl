@@ -1,13 +1,13 @@
-<form method="post" action="">
+<form method="post" action="/Dandbase_Project/index.php">
 <div id="staff" class="container">
     <div class="title">
         <b><a color="#690813">{$errore}</a></b>
         <b><fieldset class="bordo"><legend>&nbsp;Your Profile</legend>
-            <p style="float: left;"><img src="profileimages/{$username}" width="250" height="250" alt="" /></p>
+            <p style="float: left;"><img src="{$propic}" width="250" height="250" alt="" /></p>
             <p><font size="6.5" color="#690813">&nbsp {$username}</font></p>
             <p><font size="2.5" color="black">&nbsp&nbsp&nbsp&nbsp Your e-mail: {$mail}</font></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="Changepic" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Upload" class="button"> Upload Adventure</a></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="Changemail" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Changepass" class="button"> Change password &nbsp</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="Profile/Changepic" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Upload" class="button"> Upload Adventure</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="Profile/Changemail" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Profile/Changepass" class="button"> Change password &nbsp</a></p>
         </fieldset></b>
         {if $_adventures_list!=0}
         <p><input type="hidden" name="controller" value="ricerca" /></p>

@@ -27,20 +27,6 @@ class CHome {
         $VHome->mostraPagina();
     }
     /**
-     * Prende l'errore da index.php e lo passa al Controller CUtente
-     */
-    public function geterrore($errore){
-        $CUtente=USingleton::getInstance('CUtente');
-        $CUtente->setErrore($errore);
-    }
-    /**
-     * Prende l'errore da index.php e lo passa al Controller CUpload
-     */
-    public function geterrore2($errore){
-        $CUpload=USingleton::getInstance('CUpload');
-        $CUpload->setErrore($errore);
-    }
-    /**
      * Smista le richieste ai vari controller
      *
      * @return mixed

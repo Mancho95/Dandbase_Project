@@ -9,9 +9,9 @@ RewriteRule ^Logout$ ?controller=registrazione&task=esci
 RewriteRule ^Login$ ?controller=registrazione&task=login
 RewriteRule ^FAQ$ ?controller=registrazione&task=faq
 RewriteRule ^RandomAdventure$ ?controller=ricerca&task=random
-RewriteRule ^Changepic$ ?controller=profile&task=changeimg
-RewriteRule ^Changemail$ ?controller=profile&task=changeem
-RewriteRule ^Changepass$ ?controller=profile&task=changepw
+RewriteRule ^Profile/Changepic$ /Dandbase_Project/?controller=profile&task=changeimg
+RewriteRule ^Profile/Changemail$ /Dandbase_Project/?controller=profile&task=changeem
+RewriteRule ^Profile/Changepass$ /Dandbase_Project/?controller=profile&task=changepw
 RewriteRule ^Results$ index.php
 RewriteRule ^ShowAdventure$ index.php
 RewriteRule ^CommentDeleted$ index.php

@@ -1,7 +1,7 @@
 <div id="staff" class="container">
     <div class="title">
         <b><a color="#690813">{$errore}</a></b>
-        <form method="post" id="form" action="index.php">
+        <form method="post" id="form" action="/Dandbase_Project/index.php">
             <b><fieldset class="bordo"><legend>&nbsp;Change email</legend>
                     <p><label for="password" class="left">New Email:</label>
                         <input type="text" name="new" id="new" class="field" value="" tabindex="2" /></p>

@@ -24,6 +24,6 @@
                 {/if}
             </fieldset></b>
         <br></br>
-        <p><a href="?controller=ricerca&task=modulo" class="button"> Go back</a></p>
+        <p><a href="Search" class="button"> Go back</a></p>
     </div>
 </div>

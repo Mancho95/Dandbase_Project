@@ -24,21 +24,35 @@ class CUpload {
     public function creaAvventura() {
         $view=USingleton::getInstance('VUpload');
         $dati_avventura=$view->getDatiAvventura();
+        $img=$view->getPic();
+        $tipiconsentiti=array('image/png','image/jpg','image/jpeg','image/gif');
         $avventura=new EAvventura();
         $FAvventura=new FAvventura();
         $keys=array_keys($dati_avventura);
         $i=0;
         $uploaded=false;
         $count=array_filter($dati_avventura);
-        if($this->_errore!="You must upload a map!") {
-            if (count($dati_avventura) == count($count)) {
-                foreach ($dati_avventura as $dato) {
-                    $avventura->$keys[$i] = $dato;
-                    $i++;
-                }
-                $FAvventura->store($avventura);
-                $uploaded = true;
-            } else $this->_errore = 'There are some empty fields';
+        if($img['tmp_name']!=false) {
+            if (in_array($img['type'], $tipiconsentiti)) {
+                if (count($dati_avventura) == count($count)) {
+                    foreach ($dati_avventura as $dato) {
+                        $avventura->$keys[$i] = $dato;
+                        $i++;
+                    }
+                    $img2 = file_get_contents($img['tmp_name']);
+                    $img2 = base64_encode($img2);
+                    $avventura->advpic = $img2;
+                    $avventura->pictype = $img['type'];
+                    $FAvventura->store($avventura);
+                    $uploaded = true;
+                } else $this->_errore = 'There are some empty fields';
+            }
+            else {
+                $this->_errore = 'The file is not an image';
+            }
+        }
+        else{
+            $this->_errore='You must upload an image!';
         }
         if (!$uploaded) {
             $view->impostaDati('errore',$this->_errore);

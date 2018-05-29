@@ -60,9 +60,17 @@ class CRicerca {
             $this->support='';
             }
         $FCommento=new FCommento();
+        $FUtente=new FUtente();
         $FAvventura = new FAvventura();
         $avventura=$FAvventura->loadMostra($param);
         $commento=$FCommento->loadCommenti($param);
+        if($commento){
+        foreach($commento as $c){
+            $user=$FUtente->loadUser($c->username);
+            $c->propic=$user[0]->propic;
+            $c->pictype=$user[0]->pictype;
+        }
+        }
         $view->impostaDati('_adventures_list',$avventura);
         $view->impostaDati('_comments_list',$commento);
         $var=false;
@@ -89,6 +97,8 @@ class CRicerca {
                 $commento->$keys[$i] = $dato;
                 $i++;
             }
+            unset($commento->pictype);
+            unset($commento->propic);
             $FCommento->store($commento);
             $uploaded = true;
             $view->impostaDati('errore','Your comment was uploaded correctly!');
@@ -139,10 +149,16 @@ class CRicerca {
         $view->impostaDati('user',$view->getUsername());
         $FAvventura = new FAvventura();
         $FCommento = new FCommento();
+        $FUtente=new FUtente();
         $avventura=$FAvventura->search();
         $n = array_rand($avventura, 1);
         $avventura2=$FAvventura->loadMostra($avventura[$n]->cod_avventura);
         $commento=$FCommento->loadCommenti($avventura[$n]->cod_avventura);
+        foreach($commento as $c){
+            $user=$FUtente->loadUser($c->username);
+            $c->propic=$user[0]->propic;
+            $c->pictype=$user[0]->pictype;
+        }
         $view->impostaDati('_adventures_list',$avventura2);
         $view->impostaDati('_comments_list',$commento);
         $var=false;

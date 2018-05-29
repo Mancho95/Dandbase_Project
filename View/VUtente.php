@@ -9,6 +9,20 @@ class VUtente extends View {
      */
     private $_layout='default';
     /**
+     * Prende i valori contenuti nella variabile superglobale $_FILES e li inserisce in un array
+     *
+     * @return mixed
+     */
+    public function getPic() {
+        $dati_richiesti=array('tmp_name', 'type');
+        $dati=array();
+        foreach ($dati_richiesti as $dato) {
+            if (isset($_FILES['propic'][$dato]))
+                $dati[$dato]=$_FILES['propic'][$dato];
+        }
+        return $dati;
+    }
+    /**
      * restituisce la mail contenuta nelle variabili di Sessione
      *
      * @return mixed
@@ -60,6 +74,28 @@ class VUtente extends View {
     public function getCognome() {
         if (isset($_SESSION['surname']))
             return $_SESSION['surname'];
+        else
+            return false;
+    }
+    /**
+     * restituisce l'immagine del profilo contenuta nelle variabili di Sessione
+     *
+     * @return mixed
+     */
+    public function getPropic() {
+        if (isset($_SESSION['propic']))
+            return $_SESSION['propic'];
+        else
+            return false;
+    }
+    /**
+     * restituisce il tipo dell'immagine del profilo contenuto nelle variabili di Sessione
+     *
+     * @return mixed
+     */
+    public function getPictype() {
+        if (isset($_SESSION['pictype']))
+            return $_SESSION['pictype'];
         else
             return false;
     }

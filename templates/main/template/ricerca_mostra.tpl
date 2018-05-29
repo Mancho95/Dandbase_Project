@@ -8,7 +8,7 @@
                 <p align="center"><label for="username"><font size="6.5" color="#690813">Description:</font></label><br />
                 <td style="width:606px;text-align:left;vertical-align:top;white-space:wrap;"><font size="4.5" color="black">{$_adventures_list[0]->descrizione}</font></td></p>
                 <p align="center"><label for="username"><font size="6.5" color="#690813">Map:</font></label><br />
-                    <img src="adventuresmap/{$_adventures_list[0]->username}{$_adventures_list[0]->nome}" width="400" height="400" alt="" /></p>
+                    <img src="data:image/{$_adventures_list[0]->pictype};base64,{$_adventures_list[0]->advpic}" width="400" height="400" alt="" /></p>
                 <p align="center"><label for="username"><font size="6.5" color="#690813">Upvote Percentage:</font></label><br />
                     <font size="4.5" color="black">{$_upvote}</font></p>
                 {if $user=='admin'}
@@ -26,7 +26,7 @@
             {section name=i loop=$_comments_list}
                 <fieldset class="bordo">
                 <p align="left"><label for="username"><font size="4.5" color="#690813">{$_comments_list[i]->username}:</font></label><br />
-                    <p style="float: left;"><img src="profileimages/{$_comments_list[i]->username}" width="100" height="100" alt="" />&nbsp&nbsp&nbsp</p>
+                    <p style="float: left;"><img src="data:image/{$_comments_list[i]->pictype};base64,{$_comments_list[i]->propic}" width="100" height="100" alt="" />&nbsp&nbsp&nbsp</p>
                     <fieldset class="bordo">
                     <td style="width:606px;text-align:left;vertical-align:top;white-space:wrap;"><font size="2.5" color="black">{$_comments_list[i]->testo}</font></td></p>
                     {if $_comments_list[i]->upvote==true}
@@ -56,7 +56,6 @@
                     <p><input type="hidden" name="controller" value="ricerca" /></p>
                     <p><input type="hidden" name="task" value="commenta" /></p>
                     <p><input type="hidden" name="cod_avventura" value="{$_adventures_list[0]->cod_avventura}" /></p>
-                    <p><input type="hidden" name="username" value="{$user}" /></p>
                     <p><label for="testo" class="left">Your comment:</label>
                         <textarea name="testo" id="testo" cols="30" rows="10"/></textarea></p>
                     <p><label for="Version" class="left">Upvote:</label>

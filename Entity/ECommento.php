@@ -27,5 +27,15 @@ class ECommento
      * @AssociationMultiplicity 1
      */
     public $username;
+    /**
+     * @AssociationType Entity.EUtente
+     * @AssociationMultiplicity 1
+     */
+    public $propic;
+    /**
+     * @AssociationType Entity.EUtente
+     * @AssociationMultiplicity 1
+     */
+    public $pictype;
 }
 ?>

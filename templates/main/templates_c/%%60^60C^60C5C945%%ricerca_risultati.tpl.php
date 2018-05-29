@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-15 14:16:51
+<?php /* Smarty version 2.6.26, created on 2018-05-29 18:53:53
          compiled from ricerca_risultati.tpl */ ?>
 <form method="post" action="ShowAdventure">
 <div id="staff" class="container">
@@ -52,6 +52,6 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
                 <?php endif; ?>
             </fieldset></b>
         <br></br>
-        <p><a href="?controller=ricerca&task=modulo" class="button"> Go back</a></p>
+        <p><a href="Search" class="button"> Go back</a></p>
     </div>
 </div>

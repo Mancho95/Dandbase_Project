@@ -1,10 +1,10 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-10 23:09:37
+<?php /* Smarty version 2.6.26, created on 2018-05-29 18:52:54
          compiled from utente_cambiopw.tpl */ ?>
 <div id="staff" class="container">
     <div class="title">
         <b><a color="#690813"><?php echo $this->_tpl_vars['errore']; ?>
 </a></b>
-        <form method="post" id="form" action="index.php">
+        <form method="post" id="form" action="/Dandbase_Project/index.php">
             <b><fieldset class="bordo"><legend>&nbsp;Change password</legend>
                     <p><label for="username" class="left">Old password:</label>
                         <input type="password" name="old" id="old" class="field" value="" tabindex="1" /></p>

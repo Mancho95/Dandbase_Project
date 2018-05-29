@@ -82,6 +82,8 @@ class VRicerca extends View {
         foreach ($dati_richiesti as $dato) {
             if (isset($_REQUEST[$dato]))
                 $dati[$dato]=$_REQUEST[$dato];
+            if(isset($_SESSION[$dato]))
+                $dati[$dato]=$_SESSION[$dato];
         }
         return $dati;
     }

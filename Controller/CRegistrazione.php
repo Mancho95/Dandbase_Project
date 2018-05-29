@@ -60,6 +60,8 @@ class CRegistrazione {
                 $session->imposta_valore('name',$utente->getNome());
                 $session->imposta_valore('surname',$utente->getCognome());
                 $session->imposta_valore('password',$utente->getPassword());
+                $session->imposta_valore('propic',$utente->getPropic());
+                $session->imposta_valore('pictype',$utente->getPictype());
                 $session->imposta_valore('timeout',time());
                 return true;
             }
@@ -93,11 +95,14 @@ class CRegistrazione {
                     $utente->$keys[$i]=$dato;
                     $i++;
                 }
+                $path="images/defaultpropic.jpg";
+                $pathinfo=pathinfo($path);
+                $img=file_get_contents($path);
+                $img = base64_encode($img);
+                $utente->propic=$img;
+                $utente->pictype="image/".$pathinfo["extension"];
                 $FUtente->store($utente);
                 $registrato=true;
-                $path="profileimages/".$dati_registrazione['username'];
-                $path2="profileimages/defaultttt";
-                copy($path2,$path);
             } else {
                 $this->_errore='Error: Passwords dont match!';
             }

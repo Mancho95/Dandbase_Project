@@ -22,5 +22,13 @@ class EAvventura
      * @AttributeType string
      */
     public $versione;
+    /**
+     * @AttributeType mixed
+     */
+    public $advpic;
+    /**
+     * @AttributeType string
+     */
+    public $pictype;
 }
 ?>

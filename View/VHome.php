@@ -25,7 +25,7 @@ class VHome extends View {
      * aggiunge il tasto per il login nel menu (per gli utenti non autenticati)
      */
     public function aggiungiTastoLogin() {
-        $tasto_registrazione = array('testo' => 'Sign In', 'link' => 'Login');
+        $tasto_registrazione = array('testo' => 'Sign In', 'link' => '/Dandbase_Project/Login');
         $this->_top_button[] = $tasto_registrazione;
     }
     /**
@@ -86,21 +86,21 @@ class VHome extends View {
      * aggiunge il tasto logout al menu (per gli utenti autenticati)
      */
     public function aggiungiTastoLogout() {
-        $tasto_logout=array('testo' => 'Logout', 'link' => 'Logout');
+        $tasto_logout=array('testo' => 'Logout', 'link' => '/Dandbase_Project/Logout');
         $this->_top_button[]=$tasto_logout;
     }
     /**
      * aggiunge il tasto per la registrazione nel menu (per gli utenti non autenticati)
      */
     public function aggiungiTastoRegistrazione() {
-        $tasto_registrazione = array('testo' => 'Sign Up', 'link' => 'Register');
+        $tasto_registrazione = array('testo' => 'Sign Up', 'link' => '/Dandbase_Project/Register');
         $this->_top_button[] = $tasto_registrazione;
     }
     /**
      * aggiunge il tasto per la ricerca
      */
     public function aggiungiTastoSearch() {
-        $tasto_boxmail = array('testo' => 'Search adventure', 'link' => 'Search');
+        $tasto_boxmail = array('testo' => 'Search adventure', 'link' => '/Dandbase_Project/Search');
         $this->_top_button[] = $tasto_boxmail;
 
     }
@@ -108,7 +108,7 @@ class VHome extends View {
      * aggiunge il tasto per visualizzare il profilo (per gli utenti autenticati)
      */
     public function aggiungiTastoProfilo() {
-        $tasto_profilo = array('testo' => 'Profile', 'link' => 'Profile');
+        $tasto_profilo = array('testo' => 'Profile', 'link' => '/Dandbase_Project/Profile');
         $this->_top_button[] = $tasto_profilo;
 
     }
@@ -116,7 +116,7 @@ class VHome extends View {
      * aggiunge il tasto per andare sul modulo di upload (per gli utenti autenticati)
      */
     public function aggiungiTastoUpload() {
-        $tasto_mieiannunci = array('testo' => 'Upload adventure', 'link' => 'Upload');
+        $tasto_mieiannunci = array('testo' => 'Upload adventure', 'link' => '/Dandbase_Project/Upload');
         $this->_top_button[] = $tasto_mieiannunci;
 
     }
@@ -124,7 +124,7 @@ class VHome extends View {
      * aggiunge il tasto per contattare l'admin
      */
     public function aggiungiTastoContact() {
-        $tasto_mieiannunci = array('testo' => 'Contact Us', 'link' => 'ContactUs');
+        $tasto_mieiannunci = array('testo' => 'Contact Us', 'link' => '/Dandbase_Project/ContactUs');
         $this->_top_button[] = $tasto_mieiannunci;
 
     }
@@ -132,7 +132,7 @@ class VHome extends View {
      * aggiunge il tasto per l'homepage (per gli utenti non autenticati)
      */
     public function aggiungiTastoHomepage() {
-        $tasto_mieiannunci = array('testo' => 'Homepage', 'link' => 'Homepage');
+        $tasto_mieiannunci = array('testo' => 'Homepage', 'link' => '/Dandbase_Project/Homepage');
         $this->_top_button[] = $tasto_mieiannunci;
 
     }

@@ -1,19 +1,19 @@
-<?php /* Smarty version 2.6.26, created on 2018-05-14 19:01:34
+<?php /* Smarty version 2.6.26, created on 2018-05-29 18:49:47
          compiled from utente_default.tpl */ ?>
-<form method="post" action="">
+<form method="post" action="/Dandbase_Project/index.php">
 <div id="staff" class="container">
     <div class="title">
         <b><a color="#690813"><?php echo $this->_tpl_vars['errore']; ?>
 </a></b>
         <b><fieldset class="bordo"><legend>&nbsp;Your Profile</legend>
-            <p style="float: left;"><img src="profileimages/<?php echo $this->_tpl_vars['username']; ?>
+            <p style="float: left;"><img src="<?php echo $this->_tpl_vars['propic']; ?>
 " width="250" height="250" alt="" /></p>
             <p><font size="6.5" color="#690813">&nbsp <?php echo $this->_tpl_vars['username']; ?>
 </font></p>
             <p><font size="2.5" color="black">&nbsp&nbsp&nbsp&nbsp Your e-mail: <?php echo $this->_tpl_vars['mail']; ?>
 </font></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="Changepic" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Upload" class="button"> Upload Adventure</a></p>
-            <p>&nbsp&nbsp&nbsp&nbsp<a href="Changemail" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Changepass" class="button"> Change password &nbsp</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="Profile/Changepic" class="button"> Change image</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Upload" class="button"> Upload Adventure</a></p>
+            <p>&nbsp&nbsp&nbsp&nbsp<a href="Profile/Changemail" class="button"> Change email</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Profile/Changepass" class="button"> Change password &nbsp</a></p>
         </fieldset></b>
         <?php if ($this->_tpl_vars['_adventures_list'] != 0): ?>
         <p><input type="hidden" name="controller" value="ricerca" /></p>

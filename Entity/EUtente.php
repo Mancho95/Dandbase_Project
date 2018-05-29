@@ -26,6 +26,14 @@ class EUtente
      */
     public $email;
     /**
+     * @AttributeType mixed
+     */
+    public $propic;
+    /**
+     * @AttributeType string
+     */
+    public $pictype;
+    /**
      * Restituisce il valore della variabile Username dell'entità EUtente
      *
      * @return string
@@ -69,6 +77,24 @@ class EUtente
     public function getEmail ()
     {
         return $this->email;
+    }
+    /**
+     * Restituisce il valore della variabile propic dell'entità EUtente
+     *
+     * @return string
+     */
+    public function getPropic ()
+    {
+        return $this->propic;
+    }
+    /**
+     * Restituisce il valore della variabile pictype dell'entità EUtente
+     *
+     * @return string
+     */
+    public function getPictype ()
+    {
+        return $this->pictype;
     }
 }
 ?>
