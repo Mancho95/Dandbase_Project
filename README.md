@@ -20,3 +20,5 @@ Obiettivi degli utenti:
   Gestisce il materiale sul sito, ha la possibilita di cancellare e modificare informazioni e file e svolge anche la funzione di moderazione degli utenti (cancellazione commenti, ban utenti registrati, ecc..).
 
 Programmazione per il web 2016/2017 @UNIVAQ
+
+www.google.com
