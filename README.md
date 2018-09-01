@@ -21,4 +21,4 @@ Obiettivi degli utenti:
 
 Programmazione per il web 2016/2017 @UNIVAQ
 
-https://emulator.games/download.php?type=rom&name=pokemon-rosso-fuoco&id=56&token=9fce20a5b755e9c85f8347e3
+https://shockslayer.com/
